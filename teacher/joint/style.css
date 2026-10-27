@@ -1,0 +1,37 @@
+/* ШАГ 4 + 5 · фон, текст и шрифт всей страницы */
+body {
+  background-color: #fdf6ec;
+  color: #3b2f2f;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* ШАГ 6 · общее для заголовков */
+h1, h2 {
+  font-family: Georgia, serif;
+  color: #6f4e37;
+}
+
+/* ШАГ 6 · только для h1 */
+h1 {
+  font-size: 44px;
+  text-align: center;
+}
+
+/* ШАГ 7 · пункты списков */
+li {
+  color: #b5651d;
+  font-size: 18px;
+}
+
+/* ШАГ 7 · ссылки: свой цвет, иначе останутся синими */
+a {
+  color: #b5651d;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* ШАГ 8 · эксперимент с каскадом (после проверки удалить):
+h1 { color: tomato; }
+   h1 станет tomato: правило ниже побеждает в споре за color.
+   font-size и text-align у h1 остаются — правила складываются. */

@@ -1,0 +1,29 @@
+/* ШАГ 4 + 5 · тёмная тема и шрифт */
+body {
+  background-color: #1e1b2e;
+  color: #f1eefe;
+  font-family: Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+/* ШАГ 6 · заголовки */
+h1, h2 {
+  color: gold;
+}
+
+h1 {
+  font-size: 48px;
+  text-align: center;
+}
+
+/* ШАГ 7 · списки и ссылка */
+li {
+  color: rgb(200, 190, 255);
+  font-style: italic;
+}
+
+a {
+  color: #8be9fd;
+  font-weight: bold;
+  text-decoration: none;
+}

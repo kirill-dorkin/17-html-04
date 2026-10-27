@@ -1,0 +1,42 @@
+/* ШАГ 4 · страница (фон — #hex) */
+body {
+  background-color: #f6f1e7;
+  color: #2f2a24;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* ШАГ 5 · заголовки (цвет — rgb) */
+h1, h2 {
+  font-family: Georgia, serif;
+  color: rgb(160, 70, 30);
+}
+
+h1 {
+  font-size: 46px;
+  text-align: center;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+/* ШАГ 6 · списки (цвет — имя) */
+li {
+  color: darkgreen;
+  font-size: 18px;
+}
+
+/* ШАГ 7 · ссылка */
+a {
+  color: rgb(160, 70, 30);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* ОТВЕТЫ
+1) Один файл на весь сайт: поменял цвет в одном месте — поменялся везде.
+   style="" пришлось бы писать у каждого тега на каждой странице.
+2) У ссылки свой цвет от браузера (синий). Свой стиль тега сильнее
+   унаследованного от body. Нужно отдельное правило a { color: … }.
+3) Синего: одинаковый селектор, одно свойство — побеждает правило ниже. */
