@@ -3,39 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#f5f6fb" />
+  <meta name="theme-color" content="#0b0c10" />
   <meta name="description" content="CSS Lab — интерактивный урок HTML &amp; CSS №4: подключение CSS, цвет, фон и шрифт." />
   <title>CSS Lab — HTML &amp; CSS · Урок 4</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=4-4" />
-  <script src="./app.js?v=4-4" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=5-0" />
+  <script src="./app.js?v=5-0" defer></script>
 </head>
 <body>
-  <div class="app" id="app">
-    <header class="topbar">
-      <a class="brand" href="#1" aria-label="CSS Lab — первый слайд"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-copy">css<span>lab</span><small>HTML&amp;CSS / УРОК 4</small></span></a>
-      <div class="top-current"><span class="status-dot"></span><span id="sectionTitle">Введение</span><span class="slash">/</span><strong id="currentTitle">Подключение CSS</strong></div>
-      <nav class="top-actions" aria-label="Настройки презентации">
-        <button class="tool-btn" id="themeBtn" type="button" aria-label="Переключить тему" title="Тема (T)">◐</button>
-        <button class="tool-btn" id="notesBtn" type="button" aria-label="Заметки преподавателя" title="Заметки (N)">▤</button>
-        <button class="top-btn" id="outlineBtn" type="button" title="Все слайды (G)"><span class="grid-icon">▦</span><span>Слайды</span></button>
-        <button class="tool-btn" id="fullscreenBtn" type="button" aria-label="Полный экран" title="Полный экран (F)">⛶</button>
+  <div class="viewport">
+    <div class="deck" id="deck">
+      <main class="stage" id="stage" aria-label="Слайды урока" aria-live="polite"></main>
+
+      <footer class="bar">
+        <a class="brand" href="#1" aria-label="К первому слайду"><span class="brand-mark" aria-hidden="true">{ }</span><span>css lab</span><small>HTML&amp;CSS · урок 4</small></a>
+        <div class="segments" id="segments" aria-hidden="true"></div>
+        <div class="bar-right">
+          <span class="bar-section" id="sectionTitle">Начало</span>
+          <span class="bar-count" id="slideCounter">01 / 23</span>
+          <button class="nav-btn" id="prevBtn" type="button" aria-label="Предыдущий слайд">←</button>
+          <button class="nav-btn" id="nextBtn" type="button" aria-label="Следующий слайд">→</button>
+        </div>
+      </footer>
+
+      <nav class="hud" id="hud" aria-label="Настройки презентации">
+        <strong class="hud-title" id="currentTitle">Подключение CSS</strong>
+        <button class="hud-btn" id="outlineBtn" type="button" title="Все слайды (G)">Слайды <kbd>G</kbd></button>
+        <button class="hud-btn" id="notesBtn" type="button" title="Заметки (N)">Заметки <kbd>N</kbd></button>
+        <button class="hud-btn" id="themeBtn" type="button" title="Тема (T)">Тема <kbd>T</kbd></button>
+        <button class="hud-btn" id="fullscreenBtn" type="button" title="Полный экран (F)">Экран <kbd>F</kbd></button>
       </nav>
-    </header>
-    <main class="stage" id="stage" aria-label="Слайды урока" aria-live="polite"></main>
-    <footer class="bottom">
-      <button class="nav-btn" id="prevBtn" type="button" aria-label="Предыдущий слайд">← <span>Назад</span></button>
-      <div class="progress"><div class="progress-meta"><span id="progressSection">НАЧАЛО</span><span id="slideCounter">01 / 25</span></div><div class="progress-track"><div id="progressFill"></div></div></div>
-      <span class="keyboard-help">← → для листания</span>
-      <button class="nav-btn next" id="nextBtn" type="button"><span>Дальше</span> →</button>
-    </footer>
+    </div>
   </div>
-  <div class="overlay" id="outlineOverlay" hidden><div class="overlay-shade" data-close></div><aside class="side-panel" role="dialog" aria-modal="true" aria-label="Содержание"><div class="side-head"><div><small>НАВИГАЦИЯ</small><h2>Все слайды</h2></div><button class="tool-btn" data-close type="button" aria-label="Закрыть">✕</button></div><div class="outline-list" id="outlineList"></div></aside></div>
-  <div class="overlay" id="notesOverlay" hidden><div class="overlay-shade" data-close></div><aside class="side-panel" role="dialog" aria-modal="true" aria-label="Заметки преподавателя"><div class="side-head"><div><small>ТОЛЬКО ДЛЯ ПРЕПОДАВАТЕЛЯ</small><h2>Подсказки к слайду</h2></div><button class="tool-btn" data-close type="button" aria-label="Закрыть">✕</button></div><div class="notes-content" id="notesContent"></div><div class="teacher-shortcuts"><b>Клавиши</b><p>← → — слайды · G — оглавление · N — заметки · F — экран · T — тема · Esc — закрыть</p></div></aside></div>
+
+  <div class="overlay" id="outlineOverlay" hidden><div class="overlay-shade" data-close></div><aside class="side-panel" role="dialog" aria-modal="true" aria-label="Содержание"><div class="side-head"><div><small>НАВИГАЦИЯ</small><h2>Все слайды</h2></div><button class="close-btn" data-close type="button" aria-label="Закрыть">✕</button></div><div class="outline-list" id="outlineList"></div></aside></div>
+  <div class="overlay" id="notesOverlay" hidden><div class="overlay-shade" data-close></div><aside class="side-panel" role="dialog" aria-modal="true" aria-label="Заметки преподавателя"><div class="side-head"><div><small>ТОЛЬКО ДЛЯ ПРЕПОДАВАТЕЛЯ</small><h2>Подсказки к слайду</h2></div><button class="close-btn" data-close type="button" aria-label="Закрыть">✕</button></div><div class="notes-content" id="notesContent"></div><div class="teacher-shortcuts"><b>Клавиши</b><p>← → — слайды · Пробел / ↓ — шаг демо · G — оглавление · N — заметки · T — тема · F — экран · Esc — закрыть</p></div></aside></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
-
-

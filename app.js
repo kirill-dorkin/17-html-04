@@ -51,7 +51,7 @@ const slides = [
   { type: 'quiz', label: '02 / РАЗМИНКА', section: 'Разминка', title: 'Вспомним <em>img</em>', lead: 'Прошлый урок. Сначала ответ вслух, потом кнопка.', minutes: 2, lang: 'html', file: 'index.html',
     code: '<h2>Наш кофе</h2>\n<img src="img/coffee.jpg">\n<a href="menu.html">Меню</a>', question: 'Чего не хватает у картинки?', choices: ['alt — описания картинки', 'href — адреса', 'закрывающего тега </img>', 'Ничего, всё верно'], correct: 0,
     explain: '`img` — одиночный тег (void element), закрывать не нужно. `src` — путь к файлу, `alt` — альтернативный текст, если картинка не загрузилась (и для незрячих). `href` — у ссылки `a`.', notes: 'Если путаются в src/href — напомните: src = «откуда взять файл», href = «куда перейти». Сегодня href понадобится ещё раз — в теге link.' },
-  { type: 'beforeafter', label: '03 / ЗАЧЕМ', section: 'Зачем CSS', title: 'HTML — <em>что</em> на странице. CSS — <em>как</em> выглядит', lead: 'Это одна и та же страница. Отличается только файл style.css. Нажмите переключатель.', minutes: 3, notes: 'Сначала покажите страницу без CSS: «так выглядит ваша домашка с прошлого урока». Потом включите. Скажите: к концу урока каждый сделает такую же, и каждое свойство слева вы сегодня разберёте.' },
+  { type: 'beforeafter', label: '03 / ЗАЧЕМ', section: 'Зачем CSS', title: 'HTML — <em>что</em>. CSS — <em>как</em> выглядит', lead: 'Это одна и та же страница. Отличается только файл style.css. Нажмите переключатель.', minutes: 3, notes: 'Сначала покажите страницу без CSS: «так выглядит ваша домашка с прошлого урока». Потом включите. Скажите: к концу урока каждый сделает такую же, и каждое свойство слева вы сегодня разберёте.' },
   { type: 'tabs', label: '04 / ПОДКЛЮЧИТЬ', section: 'Подключение', title: 'Три способа <em>подключить CSS</em>', lead: 'Все три работают. Но на реальных сайтах — только третий. Переключайте вкладки.', minutes: 4, notes: 'Пройдите все три вкладки по порядку. Главный вопрос группе: «на сайте 20 страниц — где менять цвет заголовков?» Атрибут — на каждом теге, style — на каждой странице, link — в одном файле.' },
   { type: 'theory', label: '05 / LINK', section: 'Подключение', title: 'Тег <em>link</em> — мост к файлу стилей', lead: 'Пишем в head, рядом с title. Один раз — на каждой странице сайта.', minutes: 2, lang: 'html', file: 'index.html',
     code: '<!DOCTYPE html>\n<html>\n<head>\n  <meta charset="UTF-8">\n  <title>Кофейня</title>\n  <link rel="stylesheet" href="style.css">\n</head>\n<body>\n  <h1>Кофейня «Утро»</h1>\n</body>\n</html>',
@@ -292,7 +292,7 @@ function codeWindow(code, opts = {}) {
   return '<div class="code-window"><div class="code-head"><span><span class="dots"><i></i><i></i><i></i></span></span><span>' + esc(opts.caption || (lang === 'html' ? 'index.html' : 'style.css')) + '</span></div><pre class="code-pre">'
     + String(code).split('\n').map((line, i) => '<span class="code-line ' + (active.includes(i + 1) ? 'active-line' : '') + (opts.dimFrom && i + 1 > opts.dimFrom ? ' dim-line' : '') + '"><span class="line-no">' + (i + 1) + '</span><span>' + (line ? paint(line) : ' ') + '</span></span>').join('') + '</pre></div>';
 }
-function head(s) { return '<div class="intro"><span class="tag ' + (s.type === 'practice' ? 'green' : s.type === 'quiz' ? 'cyan' : '') + '">' + (s.label || '04 / CSS') + '</span><h2>' + s.title + '</h2><p>' + s.lead + '</p></div>'; }
+function head(s) { return '<div class="intro"><span class="tag">' + (s.label || '04 / CSS') + '</span><h2>' + s.title + '</h2><p>' + s.lead + '</p></div>'; }
 
 // Предпросмотр страницы в «браузере»
 function pageDoc(html, css, zoom = 0.8) {
@@ -460,7 +460,7 @@ function summaryView(s) {
 }
 
 function cover() {
-  return '<div class="cover-grid"><div class="cover-copy"><div class="overline"><i></i> HTML &amp; CSS <b></b> УРОК 4</div><h1>Один файл.<br><span>Весь стиль сайта.</span></h1><p>Подключаем CSS и даём странице цвет, фон и шрифт — без единой правки в HTML.</p><div class="pills"><span>&lt;link&gt;</span><span>селектор { }</span><span>color</span><span>background-color</span><span>font-family</span><span>каскад</span></div><button class="primary" data-action="next-slide">Начать урок ↗</button></div>'
+  return '<div class="cover-grid"><div class="cover-copy"><div class="overline"><i></i> HTML &amp; CSS <b></b> УРОК 4</div><h1>Один файл.<br><span>Весь стиль сайта.</span></h1><p>Подключаем CSS и даём странице цвет, фон и шрифт — без единой правки в HTML.</p><div class="pills"><span>&lt;link&gt;</span><span>селектор { }</span><span>color</span><span>background-color</span><span>font-family</span><span>каскад</span></div><button class="primary" data-action="next-slide">Начать урок →</button></div>'
     + '<div class="cover-art"><div class="art-glow"></div><div class="art-glow two"></div><div class="art-stage"><div class="art-card cover-ba"><div class="art-heading"><span>CSS LAB / 04</span><span>до → после</span></div>'
     + '<div class="cv-split"><div class="cv-page plain"><b>Кофейня «Утро»</b><span>Свежий кофе и выпечка</span><span>• Капучино — 180 сом</span><u>Instagram</u></div><div class="cv-page styled"><b>Кофейня «Утро»</b><span>Свежий кофе и выпечка</span><span>• Капучино — 180 сом</span><em>Instagram</em></div></div>'
     + '<div class="art-input">' + hlCSS('h1 { color: #6f4e37; font-family: Georgia; }') + '</div></div></div></div></div>';
@@ -510,39 +510,48 @@ function render(isNavigation) {
   document.getElementById('sectionTitle').textContent = s.section;
   document.getElementById('currentTitle').textContent = removeTags(s.title);
   document.getElementById('slideCounter').textContent = String(current + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
-  document.getElementById('progressSection').textContent = s.section.toUpperCase();
-  document.getElementById('progressFill').style.width = ((current + 1) / slides.length * 100) + '%';
+  document.getElementById('segments').innerHTML = slides.map((_, i) => '<i class="' + (i < current ? 'done' : i === current ? 'now' : '') + '"></i>').join('');
   document.getElementById('prevBtn').disabled = current === 0;
   document.getElementById('nextBtn').disabled = current === slides.length - 1;
-  document.getElementById('nextBtn').querySelector('span').textContent = current === slides.length - 1 ? 'Конец' : 'Дальше';
   document.querySelectorAll('[data-slide]').forEach((b, i) => { b.classList.toggle('active', i === current); b.setAttribute('aria-current', i === current ? 'page' : 'false'); });
   document.getElementById('notesContent').innerHTML = '<h3>' + esc(removeTags(s.title)) + '</h3><p>' + esc(s.notes || '') + '</p><p><b>План на слайд:</b> ' + s.minutes + ' мин.</p>';
 }
 // Подбираем крупнейший шрифт, при котором код целиком помещается в окно
 function fitCode() {
+  // помещается ли код: высота — по scrollHeight, ширина — по самой длинной строке
+  const fits = (pre) => {
+    if (pre.scrollHeight > pre.clientHeight + 1) return false;
+    const lines = pre.querySelectorAll('.code-line');
+    if (!lines.length) return pre.scrollWidth <= pre.clientWidth + 1;
+    let widest = 0;
+    lines.forEach((l) => { widest = Math.max(widest, l.firstElementChild.offsetWidth + l.lastElementChild.offsetWidth); });
+    return widest <= pre.clientWidth - 48;
+  };
   stage.querySelectorAll('.code-pre, .ana-code').forEach((pre) => {
-    const max = pre.classList.contains('ana-code') ? 76 : pre.closest('.bug-col') ? 34 : 30;
-    let lo = 12, hi = max;
+    const max = pre.classList.contains('ana-code') ? 104 : pre.closest('.quiz-right, .bug-col') ? 46 : 40;
+    let lo = 18, hi = max;
+    pre.style.overflow = '';
     pre.style.fontSize = hi + 'px';
-    if (pre.scrollHeight <= pre.clientHeight + 1 && pre.scrollWidth <= pre.clientWidth + 1) return;
-    while (hi - lo > 0.5) {
-      const mid = (lo + hi) / 2;
-      pre.style.fontSize = mid + 'px';
-      if (pre.scrollHeight <= pre.clientHeight + 1 && pre.scrollWidth <= pre.clientWidth + 1) lo = mid; else hi = mid;
+    if (!fits(pre)) {
+      while (hi - lo > 0.5) {
+        const mid = (lo + hi) / 2;
+        pre.style.fontSize = mid + 'px';
+        if (fits(pre)) lo = mid; else hi = mid;
+      }
+      pre.style.fontSize = lo + 'px';
     }
-    pre.style.fontSize = lo + 'px';
     // даже на минимальном шрифте не влезает — разрешаем прокрутку и показываем активную строку
-    if (pre.scrollHeight > pre.clientHeight + 1 || pre.scrollWidth > pre.clientWidth + 1) {
+    if (!fits(pre)) {
       pre.style.overflow = 'auto';
       const act = pre.querySelector('.active-line');
       if (act) pre.scrollTop = Math.max(0, act.offsetTop - pre.clientHeight / 3);
     }
   });
 }
-// Масштаб страницы в предпросмотре — по высоте окна, чтобы на большом экране не было пустоты
+// Масштаб страницы в предпросмотре: текст должен читаться с последней парты
 function fitPreviews() {
   stage.querySelectorAll('.pv').forEach((f) => {
-    const apply = () => { const d = f.contentDocument; if (!d || !d.documentElement) return; const z = Math.max(0.72, Math.min(1.4, f.clientHeight / 430)); d.documentElement.style.zoom = z; };
+    const apply = () => { const d = f.contentDocument; if (!d || !d.documentElement) return; d.documentElement.style.zoom = Math.max(1.5, Math.min(2, f.clientHeight / 300)); };
     f.addEventListener('load', apply); apply();
   });
 }
@@ -612,7 +621,7 @@ document.getElementById('prevBtn').addEventListener('click', () => go(current - 
 document.getElementById('nextBtn').addEventListener('click', () => go(current + 1));
 document.getElementById('outlineBtn').addEventListener('click', () => toggleOverlay('outlineOverlay'));
 document.getElementById('notesBtn').addEventListener('click', () => toggleOverlay('notesOverlay'));
-document.getElementById('themeBtn').addEventListener('click', () => { document.body.classList.toggle('dark'); try { localStorage.setItem('css-lab-theme', document.body.classList.contains('dark') ? 'dark' : 'light'); } catch (e) { /* */ } });
+document.getElementById('themeBtn').addEventListener('click', () => { document.body.classList.toggle('light'); try { localStorage.setItem('css-lab-theme-v5', document.body.classList.contains('light') ? 'light' : 'dark'); } catch (e) { /* */ } });
 document.getElementById('fullscreenBtn').addEventListener('click', () => { if (document.fullscreenElement) document.exitFullscreen?.(); else document.documentElement.requestFullscreen?.(); });
 document.querySelectorAll('[data-close]').forEach((n) => n.addEventListener('click', closeOverlays));
 document.getElementById('outlineList').innerHTML = slides.map((s, i) => '<button type="button" data-slide="' + i + '"><strong>' + String(i + 1).padStart(2, '0') + '</strong><span>' + esc(removeTags(s.title)) + '</span></button>').join('');
@@ -634,7 +643,16 @@ window.addEventListener('keydown', (e) => {
   else if (e.key.toLowerCase() === 't') document.getElementById('themeBtn').click();
   else if (e.key.toLowerCase() === 'f') document.getElementById('fullscreenBtn').click();
 }, true);
-try { if (localStorage.getItem('css-lab-theme') === 'dark') document.body.classList.add('dark'); } catch (e) { /* */ }
+try { if (localStorage.getItem('css-lab-theme-v5') === 'light') document.body.classList.add('light'); } catch (e) { /* */ }
+// Холст 1920×1080 масштабируется под окно
+const deck = document.getElementById('deck');
+function scaleDeck() { deck.style.setProperty('--s', Math.min(innerWidth / 1920, innerHeight / 1080)); }
+scaleDeck();
+window.addEventListener('resize', scaleDeck);
+// Панель настроек появляется при движении мыши и прячется через 2.5 с
+const hud = document.getElementById('hud');
+let hudTimer;
+window.addEventListener('mousemove', () => { hud.classList.add('visible'); clearTimeout(hudTimer); hudTimer = setTimeout(() => { if (!hud.matches(':hover')) hud.classList.remove('visible'); }, 2500); });
 if (!location.hash) history.replaceState(null, '', '#1');
 current = fromHash();
 render(true);
