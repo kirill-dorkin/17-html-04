@@ -17,7 +17,8 @@
     .bar a.sec{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
     h2{font:500 14px "DM Mono",monospace;color:var(--muted);margin:26px 0 8px}
     pre{background:var(--code);color:#e3e7fa;border-radius:14px;padding:18px 20px;overflow:auto;font:500 14px/1.7 "DM Mono",monospace;margin:0}
-    .c{color:#9aa3c4}
+    .c{color:#aab2d0}
+    .st{color:#c9a6ff;font-weight:600}.lb{color:#70c8e9;font-weight:600}.ok{color:#b1e0a2;font-weight:600}.no{color:#eb9ac6;font-weight:600}.cd{color:#f5c582}.br{color:#5d6584}
   </style>
 </head>
 <body>
@@ -33,6 +34,15 @@
     solo: { title: 'Самостоятельно: любимый фильм', files: ['index.html', 'style.css'] },
     homework: { title: 'Домашнее задание: страница-рецепт', files: ['index.html', 'css/style.css'] },
   };
+  const esc = (t) => t.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  // подсветка ТЗ: шаги, метки «Что/Зачем/Проверка», код и рамки
+  const paint = (text) => esc(text)
+    .replace(/^(.*(═|<!--|-->|\/\*|\*\/).*)$/gm, '<span class="br">$1</span>')
+    .replace(/(── (?:ШАГ|БОНУС|ВОПРОСЫ)[^─\n]*)/g, '<span class="st">$1</span>')
+    .replace(/(^|\s)(Что|Зачем|Как|Повторяем|Проверка|Ответы|Вопрос):/gm, '$1<span class="$2">$2:</span>')
+    .replace(/class="(Что|Зачем|Как|Повторяем)"/g, 'class="lb"').replace(/class="(Проверка|Ответы|Вопрос)"/g, 'class="ok"')
+    .replace(/(^|\s)(Нельзя|ВНИМАНИЕ):/gm, '$1<span class="no">$2:</span>')
+    .replace(/(&lt;[a-z!][^&\n]*?&gt;|#[0-9a-f]{6}\b|\b(?:img|css)\/[\w.]+|\b[a-z-]+\.(?:css|html|svg)\b|\b\d+px\b|rgb\([^)]*\)|\b(?:sans-serif|serif|Georgia|Arial)\b)/g, '<span class="cd">$1</span>');
   const key = new URLSearchParams(location.search).get('p');
   const set = SETS[key] || SETS.joint;
   const name = SETS[key] ? key : 'joint';
@@ -44,7 +54,7 @@
     const h = document.createElement('h2'); h.textContent = name + '/' + f;
     const pre = document.createElement('pre'); pre.className = 'c';
     box.append(h, pre);
-    try { pre.textContent = await (await fetch('/materials/' + name + '/' + f)).text(); } catch (e) { pre.textContent = 'Не удалось загрузить файл'; }
+    try { pre.innerHTML = paint(await (await fetch('/materials/' + name + '/' + f)).text()); } catch (e) { pre.textContent = 'Не удалось загрузить файл'; }
   });
 </script>
 </body>

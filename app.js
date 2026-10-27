@@ -1,7 +1,7 @@
 "use strict";
 /* HTML & CSS · Урок 4 · Подключение CSS: цвет, фон, шрифт
    Слайды описаны данными ниже. Типы: cover, quiz, theory, beforeafter, tabs, anatomy, live, color, devtools,
-   playground, bugs, practice, summary, end. */
+   playground, bugs, practice, glossary, summary, end. */
 
 // ───────── Страница-пример для всех предпросмотров
 const PAGE = '<h1>Кофейня «Утро»</h1>\n<p>Свежий кофе с 8:00. Мы в <a href="https://instagram.com">Instagram</a> — пишите!</p>\n<h2>Меню</h2>\n<ul>\n  <li>Капучино — 180 сом</li>\n  <li>Латте — 200 сом</li>\n  <li>Круассан — 120 сом</li>\n</ul>\n<img src="assets/coffee.svg" alt="Чашка кофе">';
@@ -14,33 +14,33 @@ const LIVE = {
     base: '',
     start: 'Страница без CSS: белый фон, чёрный текст, шрифт браузера. Жмите «Следующий шаг».',
     rules: [
-      ['body {\n  background-color: #fdf6ec;\n}', 'body — вся страница. Фон стал кремовым.'],
-      ['p {\n  color: #6b5b53;\n}', 'p — ВСЕ абзацы сразу. Селектор по тегу выбирает каждый такой тег на странице.'],
-      ['h1, h2 {\n  color: #6f4e37;\n}', 'Через запятую — одно правило сразу для h1 и h2. Не нужно писать два раза.'],
-      ['li {\n  color: #b5651d;\n}', 'li — пункты списка. Маркеры-точки перекрасились вместе с текстом.'],
-      ['a {\n  color: #b5651d;\n  background-color: #ffe2b8;\n}', 'Фон можно дать любому тегу, не только странице: у ссылки появилась «подсветка».'],
+      ['body {\n  background-color: #fdf6ec;\n}', '`body` — вся страница. `background-color` сделал фон кремовым.', 'background-color — цвет фона'],
+      ['p {\n  color: #6b5b53;\n}', '`p` — ВСЕ абзацы сразу. Селектор по тегу выбирает каждый такой тег на странице.', 'type selector — селектор типа'],
+      ['h1, h2 {\n  color: #6f4e37;\n}', 'Через запятую — одно правило сразу для `h1` и `h2`. Не нужно писать два раза.', 'selector list — группировка селекторов'],
+      ['li {\n  color: #b5651d;\n}', '`li` — пункты списка. Маркеры-точки перекрасились вместе с текстом.', 'color — цвет текста (foreground)'],
+      ['a {\n  color: #b5651d;\n  background-color: #ffe2b8;\n}', 'Фон можно дать любому тегу, не только странице: у ссылки появилась «подсветка».', 'background — фон элемента'],
     ],
   },
   font: {
     base: 'body{background-color:#fdf6ec}p{color:#6b5b53}h1,h2{color:#6f4e37}li{color:#b5651d}a{color:#b5651d}',
     start: 'Цвета с прошлого демо уже подключены. Теперь меняем только шрифт.',
     rules: [
-      ['body {\n  font-family: Arial, sans-serif;\n}', 'Шрифт для body — сменился шрифт ВСЕЙ страницы, даже у заголовков. Это наследование — разберём через слайд.'],
-      ['h1 {\n  font-family: Georgia, serif;\n  font-size: 44px;\n  text-align: center;\n}', 'У h1 свой шрифт с засечками, размер 44px и выравнивание по центру.'],
-      ['h2 {\n  font-weight: normal;\n}', 'Заголовки жирные по умолчанию. normal убирает жирность, bold — наоборот добавляет.'],
-      ['p {\n  font-size: 18px;\n  line-height: 1.6;\n}', 'line-height — высота строки. 1.6 = в 1.6 раза больше шрифта: текст «дышит».'],
-      ['li {\n  font-style: italic;\n}', 'font-style: italic — курсив.'],
-      ['a {\n  font-weight: bold;\n  text-decoration: none;\n}', 'text-decoration: none убирает подчёркивание у ссылки.'],
+      ['body {\n  font-family: Arial, sans-serif;\n}', 'Шрифт для `body` — сменился шрифт ВСЕЙ страницы, даже у заголовков. `sans-serif` — запасной шрифт без засечек.', 'font stack + fallback — список шрифтов с запасным'],
+      ['h1 {\n  font-family: Georgia, serif;\n  font-size: 44px;\n  text-align: center;\n}', 'У `h1` свой шрифт с засечками (`serif`), размер `44px` и выравнивание по центру.', 'serif / sans-serif — с засечками / без засечек'],
+      ['h2 {\n  font-weight: normal;\n}', 'Заголовки жирные по умолчанию. `normal` убирает жирность, `bold` — добавляет.', 'font-weight — насыщенность (вес) шрифта'],
+      ['p {\n  font-size: 18px;\n  line-height: 1.6;\n}', '`line-height: 1.6` — строка в 1.6 раза выше шрифта: текст «дышит».', 'line-height — межстрочный интервал (интерлиньяж)'],
+      ['li {\n  font-style: italic;\n}', '`font-style: italic` — курсив.', 'font-style — начертание шрифта'],
+      ['a {\n  font-weight: bold;\n  text-decoration: none;\n}', '`text-decoration: none` убирает подчёркивание у ссылки.', 'text-decoration — линия текста (подчёркивание)'],
     ],
   },
   inherit: {
     base: '',
     start: 'Чистая страница. Пишем стили только для одного тега — body.',
     rules: [
-      ['body {\n  color: #6f4e37;\n  font-family: Georgia, serif;\n}', 'Писали только для body, а поменялось ВСЁ внутри: h1, p, li. Дети наследуют цвет и шрифт от родителя.'],
-      ['/* а ссылка осталась синей! */', 'Ссылка не унаследовала цвет: у a есть свой цвет от браузера. Свой стиль тега сильнее унаследованного.'],
-      ['a {\n  color: #b5651d;\n}', 'Чтобы перекрасить ссылку — пишем правило именно для a.'],
-      ['h1 {\n  font-family: Arial, sans-serif;\n}', 'Так же работает и наше правило: h1 со своим шрифтом не слушает body.'],
+      ['body {\n  color: #6f4e37;\n  font-family: Georgia, serif;\n}', 'Писали только для `body`, а поменялось ВСЁ внутри: `h1`, `p`, `li`. Дочерние элементы наследуют цвет и шрифт от родителя.', 'inheritance — наследование (parent → child)'],
+      ['/* а ссылка осталась синей! */', 'Ссылка не унаследовала цвет: у `a` есть свой цвет от браузера. Стиль самого тега сильнее унаследованного.', 'user agent stylesheet — стили браузера по умолчанию', 'a'],
+      ['a {\n  color: #b5651d;\n}', 'Чтобы перекрасить ссылку — пишем правило именно для `a`.', 'override — переопределить стиль'],
+      ['h1 {\n  font-family: Arial, sans-serif;\n}', 'Так же работает и наше правило: `h1` со своим шрифтом не слушает `body`.', 'override — своё правило сильнее наследования'],
     ],
   },
 };
@@ -50,59 +50,60 @@ const slides = [
   { type: 'cover', title: 'Подключение CSS', section: 'Начало', minutes: 1, notes: 'Сегодня страница из прошлого урока получает внешний вид. План на 90 минут: 5 — разминка и «до/после», 40 — теория с живыми демо, 25 — делаем вместе, 15 — сами, 5 — шпаргалка. Всё, что на слайдах, ученики увидят в практике.' },
   { type: 'quiz', label: '02 / РАЗМИНКА', section: 'Разминка', title: 'Вспомним <em>img</em>', lead: 'Прошлый урок. Сначала ответ вслух, потом кнопка.', minutes: 2, lang: 'html', file: 'index.html',
     code: '<h2>Наш кофе</h2>\n<img src="img/coffee.jpg">\n<a href="menu.html">Меню</a>', question: 'Чего не хватает у картинки?', choices: ['alt — описания картинки', 'href — адреса', 'закрывающего тега </img>', 'Ничего, всё верно'], correct: 0,
-    explain: 'img — одиночный тег, закрывать не нужно. src — путь к файлу, alt — текст, если картинка не загрузилась (и для незрячих). Адрес href — у ссылки a.', notes: 'Если путаются в src/href — напомните: src = «откуда взять файл», href = «куда перейти». Сегодня href понадобится ещё раз — в теге link.' },
+    explain: '`img` — одиночный тег (void element), закрывать не нужно. `src` — путь к файлу, `alt` — альтернативный текст, если картинка не загрузилась (и для незрячих). `href` — у ссылки `a`.', notes: 'Если путаются в src/href — напомните: src = «откуда взять файл», href = «куда перейти». Сегодня href понадобится ещё раз — в теге link.' },
   { type: 'beforeafter', label: '03 / ЗАЧЕМ', section: 'Зачем CSS', title: 'HTML — <em>что</em> на странице. CSS — <em>как</em> выглядит', lead: 'Это одна и та же страница. Отличается только файл style.css. Нажмите переключатель.', minutes: 3, notes: 'Сначала покажите страницу без CSS: «так выглядит ваша домашка с прошлого урока». Потом включите. Скажите: к концу урока каждый сделает такую же, и каждое свойство слева вы сегодня разберёте.' },
   { type: 'tabs', label: '04 / ПОДКЛЮЧИТЬ', section: 'Подключение', title: 'Три способа <em>подключить CSS</em>', lead: 'Все три работают. Но на реальных сайтах — только третий. Переключайте вкладки.', minutes: 4, notes: 'Пройдите все три вкладки по порядку. Главный вопрос группе: «на сайте 20 страниц — где менять цвет заголовков?» Атрибут — на каждом теге, style — на каждой странице, link — в одном файле.' },
   { type: 'theory', label: '05 / LINK', section: 'Подключение', title: 'Тег <em>link</em> — мост к файлу стилей', lead: 'Пишем в head, рядом с title. Один раз — на каждой странице сайта.', minutes: 2, lang: 'html', file: 'index.html',
     code: '<!DOCTYPE html>\n<html>\n<head>\n  <meta charset="UTF-8">\n  <title>Кофейня</title>\n  <link rel="stylesheet" href="style.css">\n</head>\n<body>\n  <h1>Кофейня «Утро»</h1>\n</body>\n</html>',
-    items: [['rel="stylesheet"', 'Говорит браузеру: «этот файл — таблица стилей». Без rel файл не подключится.'], ['href="style.css"', 'Путь к файлу — как src у картинки. Файл в папке css → href="css/style.css".'], ['Одиночный тег', 'Как img — без закрывающего. Место — внутри head.']], notes: 'Свяжите с уроком 3: путь в href работает так же, как путь у img. VS Code: напишите link и нажмите Tab — Emmet допишет rel и href.' },
+    items: [['rel="stylesheet"', 'Говорит браузеру: «этот файл — таблица стилей». Без `rel` файл не подключится.', 'stylesheet — таблица стилей'], ['href="style.css"', 'Путь к файлу — как `src` у картинки. Файл в папке css → `href="css/style.css"`.', 'relative path — относительный путь'], ['Одиночный тег', 'Как `img` — без закрывающего. Место — внутри `head`.', 'external CSS — внешние стили']], notes: 'Свяжите с уроком 3: путь в href работает так же, как путь у img. VS Code: напишите link и нажмите Tab — Emmet допишет rel и href.' },
   { type: 'anatomy', label: '06 / ПРАВИЛО', section: 'Синтаксис', title: 'Из чего состоит <em>CSS-правило</em>', lead: 'Нажимайте «Следующий шаг» — подсветится каждая часть.', minutes: 3, notes: 'Пусть ученики хором называют части: селектор, свойство, значение. Особо отметьте точку с запятой — это ошибка №1 на практике.' },
   { type: 'quiz', label: '07 / ПРОВЕРКА', section: 'Синтаксис', title: 'Найдите <em>ошибку</em>', lead: 'Заголовок не покраснел. Почему?', minutes: 1, lang: 'css', file: 'style.css',
     code: 'h1 {\n  color red;\n}', question: 'Что не так?', choices: ['Нет двоеточия после color', 'red нужно в кавычках', 'Нужно .h1 с точкой', 'Всё верно'], correct: 0,
-    explain: 'Свойство и значение разделяет двоеточие: color: red; Браузер не покажет ошибку — он просто пропустит строку.', notes: '' },
+    explain: 'Свойство (property) и значение (value) разделяет двоеточие: `color: red;` Браузер не покажет ошибку — он просто пропустит объявление (invalid declaration).', notes: '' },
   { type: 'theory', label: '08 / СЕЛЕКТОРЫ', section: 'Синтаксис', title: 'Селектор по <em>тегу</em>', lead: 'Пишем имя тега без < > — и правило применяется ко всем таким тегам на странице.', minutes: 3, lang: 'css', file: 'style.css',
     code: '/* все абзацы страницы */\np {\n  color: gray;\n}\n\n/* одно правило для h1 и h2 */\nh1, h2 {\n  color: navy;\n}\n\n/* все пункты в ul и ol */\nli {\n  color: teal;\n}',
-    items: [['По тегу', 'p { … } — красит каждый p на странице. Пишем без угловых скобок.'], ['Через запятую', 'h1, h2 { … } — одно правило на несколько тегов.'], ['Комментарий', '/* … */ — заметка для человека. Браузер её пропускает.']], notes: 'Выбирать отдельный элемент (только этот абзац) научимся через классы — это будет позже. Сегодня хватает тегов.' },
+    items: [['По тегу', '`p { }` — красит каждый `p` на странице. Пишем без угловых скобок.', 'type selector — селектор типа'], ['Через запятую', '`h1, h2 { }` — одно правило на несколько тегов.', 'selector list — группировка'], ['Комментарий', '`/* заметка */` — для человека. Браузер его пропускает.', 'CSS comment — комментарий']], notes: 'Выбирать отдельный элемент (только этот абзац) научимся через классы — это будет позже. Сегодня хватает тегов.' },
   { type: 'color', label: '09 / ЦВЕТ', section: 'Цвет и фон', title: 'Три способа <em>записать цвет</em>', lead: 'Двигайте ползунки: один и тот же цвет можно записать тремя способами.', minutes: 4, notes: 'Сначала покажите имена (tomato, navy) — проще всего. Потом RGB: «сколько красного, зелёного и синего от 0 до 255». HEX — те же три числа, только короче. В дизайн-макетах почти всегда HEX — его копируют из Figma.' },
   { type: 'live', demo: 'color', label: '10 / ЦВЕТ', section: 'Цвет и фон', title: '<em>color</em> и <em>background-color</em> — по шагам', lead: 'color — цвет текста. background-color — цвет фона. Слева правило, справа — что изменилось.', minutes: 4, notes: 'На каждом шаге спрашивайте до нажатия: «что сейчас поменяется?» Частая путаница: хотят покрасить текст, а пишут background-color.' },
   { type: 'quiz', label: '11 / ПРОВЕРКА', section: 'Цвет и фон', title: 'Куда <em>пропал текст</em>?', lead: 'Текст на странице есть, но его не видно.', minutes: 1, lang: 'css', file: 'style.css',
     code: 'body {\n  background-color: #ffffff;\n}\n\np {\n  color: #ffffff;\n}', question: 'Почему абзац не видно?', choices: ['#ffffff — белый текст на белом фоне', 'Неправильный HEX', 'p не наследует цвет', 'Нужно rgb() вместо HEX'], correct: 0,
-    explain: '#ffffff — белый. Белый текст на белом фоне есть, но его не видно. Цвет текста и фона должны контрастировать.', notes: 'Попросите выделить текст мышкой — он «появится». Хороший момент сказать про контраст и читаемость.' },
+    explain: '`#ffffff` — белый. Белый текст на белом фоне есть, но его не видно. Текст и фон должны контрастировать (contrast) — иначе страница нечитаема.', notes: 'Попросите выделить текст мышкой — он «появится». Хороший момент сказать про контраст и читаемость.' },
   { type: 'live', demo: 'font', label: '12 / ШРИФТ', section: 'Шрифт', title: 'Шрифт, размер, <em>начертание</em>', lead: 'Шесть свойств, которые делают текст «дизайнерским».', minutes: 4, notes: 'font-family: всегда с запасным вариантом через запятую. Если у пользователя нет Georgia, браузер возьмёт любой serif. Имена с пробелом — в кавычках: "Times New Roman".' },
   { type: 'live', demo: 'inherit', label: '13 / НАСЛЕДОВАНИЕ', section: 'Наследование', title: 'Дети <em>наследуют</em> от родителя', lead: 'Цвет и шрифт текста переходят от body ко всему, что внутри. Но не всегда.', minutes: 3, notes: 'Вспомните вложенность с урока 2: всё внутри body — его «дети». Поэтому общий шрифт и цвет пишем один раз для body. Исключение — ссылка: у неё свой цвет от браузера.' },
   { type: 'theory', label: '14 / КАСКАД', section: 'Каскад', title: 'Кто <em>победит</em>?', lead: 'Если два правила спорят за одно свойство — побеждает нижнее. Остальные свойства складываются.', minutes: 2, lang: 'css', file: 'style.css',
     code: 'p {\n  color: gray;\n  font-size: 18px;\n}\n\np {\n  color: navy;   /* ниже — побеждает */\n}\n\n/* итог для p:\n   color: navy\n   font-size: 18px */',
-    items: [['Ниже — главнее', 'Одинаковый селектор, одно свойство → работает то, что написано позже.'], ['Правила складываются', 'font-size из первого правила никуда не делся.'], ['style="…" сильнее файла', 'Атрибут перебивает style.css — поэтому его и не используем.']], notes: 'Слово «каскад» — это и есть Cascading в CSS (Cascading Style Sheets). Подробно про силу селекторов — когда пройдём классы.' },
+    items: [['Ниже — главнее', 'Одинаковый селектор, одно свойство → работает то, что написано позже.', 'source order — порядок в коде'], ['Правила складываются', '`font-size` из первого правила никуда не делся.', 'cascade — каскад'], ['style="…" сильнее файла', 'Атрибут перебивает style.css — поэтому его и не используем.', 'inline styles — инлайн-стили']], notes: 'Слово «каскад» — это и есть Cascading в CSS (Cascading Style Sheets). Подробно про силу селекторов — когда пройдём классы.' },
   { type: 'quiz', label: '15 / ПРОВЕРКА', section: 'Каскад', title: 'Каким будет <em>абзац</em>?', lead: 'Подумайте про оба правила.', minutes: 1, lang: 'css', file: 'style.css',
     code: 'p {\n  color: red;\n  font-size: 20px;\n}\n\np {\n  color: green;\n}', question: 'Как будет выглядеть p?', choices: ['Красный, 20px', 'Зелёный, 20px', 'Зелёный, обычного размера'], correct: 1,
-    explain: 'color спорят — побеждает нижнее: green. font-size никто не перебил — остаётся 20px.', notes: '' },
+    explain: 'За `color` спорят два правила — побеждает нижнее: `green`. `font-size` никто не переопределил (override) — остаётся `20px`.', notes: '' },
   { type: 'devtools', label: '16 / DEVTOOLS', section: 'DevTools', title: 'DevTools: <em>откуда этот стиль?</em>', lead: 'F12 → Elements → Styles. Выберите тег слева, отключайте свойства галочками.', minutes: 3, notes: 'Это копия настоящей панели Chrome. Покажите: 1) a — цвет body перечёркнут, потому что у ссылки свой цвет от браузера; 2) снимите галочку — стиль выключится; 3) потом откройте настоящий F12 на любом сайте. Главный инструмент, когда «стиль не работает».' },
   { type: 'playground', label: '17 / ПЕСОЧНИЦА', section: 'Песочница', title: 'Попробуйте <em>сами</em>', lead: 'Меняйте CSS слева — страница справа обновляется сразу. Можно звать учеников к доске.', minutes: 2, notes: 'По желанию, если есть время. Дайте ученику задание: «сделайте ночную тему» — тёмный фон, светлый текст.' },
   { type: 'bugs', label: '18 / ОТЛАДКА', section: 'Ошибки', title: 'Почему <em>не работает</em>?', lead: 'Сначала группа объясняет причину. Потом откройте исправление.', minutes: 4, notes: 'Эти ошибки будут на практике у каждого. Главное правило: CSS не ругается — он молча пропускает. Поэтому смотрим в DevTools.' },
   { type: 'practice', practice: 'joint', label: '19 / ВМЕСТЕ', section: 'Практика', title: 'Вместе: <em>сайт кофейни</em>', lead: 'С нуля по ТЗ: каркас и контент — повторение, потом подключаем CSS и красим шаг за шагом.', minutes: 25, notes: 'Подробный сценарий — teacher/JOINT-GUIDE.md. VS Code слева, браузер справа. После каждого шага: Ctrl+S → F5. Если стиль не применился — сразу открываем DevTools, а не гадаем.' },
   { type: 'practice', practice: 'solo', label: '20 / САМИ', section: 'Практика', title: 'Самостоятельно: <em>любимый фильм</em>', lead: 'Те же шаги, своя страница и тёмная тема. Подглядывать в совместную практику можно.', minutes: 15, notes: 'Не подсказывайте код — спрашивайте: «какой селектор?», «какое свойство меняет цвет текста?». Тёмная тема проверяет понимание color vs background-color.' },
-  { type: 'summary', part: 'concepts', label: '21 / ШПАРГАЛКА 1/2', section: 'Итог', title: 'Шпаргалка: <em>главные понятия</em>', lead: 'Весь урок на одном экране. Листать презентацию не нужно — можно скачать или распечатать.', minutes: 3, notes: 'Пусть ученики сфотографируют или скачают. Пройдитесь по каждому блоку одной фразой.' },
-  { type: 'summary', part: 'exceptions', label: '22 / ШПАРГАЛКА 2/2', section: 'Итог', title: 'Шпаргалка: <em>исключения и ловушки</em>', lead: 'Именно эти случаи дают ошибки в домашке. Проверьте себя по списку.', minutes: 2, notes: 'Спросите 2–3 пункта: «почему так?» — без подсказки.' },
+  { type: 'glossary', label: '21 / СЛОВАРЬ', section: 'Итог', title: 'Словарь <em>разработчика</em>', lead: 'Так эти вещи называют в документации, на собеседованиях и в команде. Русский термин — английский — как говорят вслух.', minutes: 3, notes: 'Пройдитесь по строкам: вы говорите русский термин — группа хором английский. Объясните, что гуглить лучше по-английски: «css inheritance», «user agent stylesheet» — ответов в разы больше.' },
+  { type: 'summary', part: 'concepts', label: '22 / ШПАРГАЛКА 1/2', section: 'Итог', title: 'Шпаргалка: <em>главные понятия</em>', lead: 'Весь урок на одном экране. Листать презентацию не нужно — можно скачать или распечатать.', minutes: 3, notes: 'Пусть ученики сфотографируют или скачают. Пройдитесь по каждому блоку одной фразой.' },
+  { type: 'summary', part: 'exceptions', label: '23 / ШПАРГАЛКА 2/2', section: 'Итог', title: 'Шпаргалка: <em>исключения и ловушки</em>', lead: 'Именно эти случаи дают ошибки в домашке. Проверьте себя по списку.', minutes: 2, notes: 'Спросите 2–3 пункта: «почему так?» — без подсказки.' },
   { type: 'end', title: 'Готово', section: 'Итог', minutes: 1, notes: 'Домашнее задание: страница-рецепт, CSS в отдельной папке css/. ТЗ — в комментариях файлов.' },
 ];
 
 const TABS = [
-  { name: 'style="…"', title: 'Атрибут style', verdict: 'bad', text: 'Только для одного тега. 10 заголовков — 10 раз писать одно и то же. HTML и оформление перемешаны.',
+  { name: 'style="…"', title: 'Инлайн-стили · inline styles', verdict: 'bad', text: 'Только для одного тега. 10 заголовков — 10 раз писать одно и то же. HTML и оформление перемешаны.',
     files: [['index.html', 'html', '<h1 style="color: tomato;">Кофейня</h1>\n<p>Свежий кофе</p>\n<h1>Меню</h1>']], html: '<h1 style="color: tomato;">Кофейня</h1>\n<p>Свежий кофе</p>\n<h1>Меню</h1>', css: '' },
-  { name: '<style>', title: 'Тег style в head', verdict: 'mid', text: 'Работает для всех тегов страницы. Но на каждой странице сайта — своя копия стилей.',
+  { name: '<style>', title: 'Внутренние стили · internal CSS', verdict: 'mid', text: 'Работает для всех тегов страницы. Но на каждой странице сайта — своя копия стилей.',
     files: [['index.html', 'html', '<head>\n  <style>\n    h1 { color: tomato; }\n    p { color: gray; }\n  </style>\n</head>\n<body>\n  <h1>Кофейня</h1>\n  <p>Свежий кофе</p>\n  <h1>Меню</h1>\n</body>']], html: '<h1>Кофейня</h1>\n<p>Свежий кофе</p>\n<h1>Меню</h1>', css: 'h1 { color: tomato; }\np { color: gray; }' },
-  { name: '<link> + файл', title: 'Отдельный файл style.css', verdict: 'good', text: 'Один файл на весь сайт. Поменяли цвет в нём — поменялся на всех страницах. Так делаем всегда.',
+  { name: '<link> + файл', title: 'Внешний файл · external CSS', verdict: 'good', text: 'Один файл на весь сайт. Поменяли цвет в нём — поменялся на всех страницах. Так делаем всегда.',
     files: [['index.html', 'html', '<head>\n  <link rel="stylesheet" href="style.css">\n</head>\n<body>\n  <h1>Кофейня</h1>\n  <p>Свежий кофе</p>\n  <h1>Меню</h1>\n</body>'], ['style.css', 'css', 'h1 {\n  color: tomato;\n}\n\np {\n  color: gray;\n}']], html: '<h1>Кофейня</h1>\n<p>Свежий кофе</p>\n<h1>Меню</h1>', css: 'h1 { color: tomato; }\np { color: gray; }' },
 ];
 
 const ANATOMY = [
-  ['sel', 'Селектор', 'КОГО оформляем. Здесь — все заголовки h1.'],
-  ['brace', 'Фигурные скобки', 'Блок правила: всё внутри относится к селектору.'],
-  ['prop', 'Свойство', 'ЧТО меняем: цвет, размер, шрифт…'],
-  ['colon', 'Двоеточие', 'Отделяет свойство от значения.'],
-  ['val', 'Значение', 'КАК меняем: tomato, 40px.'],
-  ['semi', 'Точка с запятой', 'Конец строки-объявления. Без неё ломается и следующая строка.'],
-  ['decl', 'Объявление', 'Свойство + значение. В одном правиле их сколько угодно.'],
+  ['sel', 'Селектор', 'selector', 'КОГО оформляем. Здесь — все заголовки `h1`.'],
+  ['brace', 'Фигурные скобки', 'declaration block', 'Блок объявлений: всё внутри `{ }` относится к селектору.'],
+  ['prop', 'Свойство', 'property', 'ЧТО меняем: цвет, размер, шрифт…'],
+  ['colon', 'Двоеточие', 'colon', 'Отделяет свойство от значения.'],
+  ['val', 'Значение', 'value', 'КАК меняем: `tomato`, `40px`.'],
+  ['semi', 'Точка с запятой', 'semicolon', 'Конец объявления. Без неё ломается и следующая строка.'],
+  ['decl', 'Объявление', 'declaration', 'Свойство + значение. Всё правило целиком — rule (ruleset).'],
 ];
 
 const COLOR_PRESETS = [['tomato', 255, 99, 71], ['navy', 0, 0, 128], ['gold', 255, 215, 0], ['teal', 0, 128, 128], ['black', 0, 0, 0], ['white', 255, 255, 255], ['кофе', 111, 78, 55]];
@@ -127,50 +128,70 @@ const PLAY_PRESETS = {
 };
 
 const BUGS = [
-  { title: 'Нет точки с запятой', lang: 'css', bad: 'h1 {\n  color: navy\n  font-size: 40px;\n}', good: 'h1 {\n  color: navy;\n  font-size: 40px;\n}', why: 'Без ; браузер читает «navy font-size: 40px» как одно значение color — и выкидывает оба свойства.' },
-  { title: 'Такого свойства нет', lang: 'css', bad: 'p {\n  font-color: gray;\n  text-color: gray;\n}', good: 'p {\n  color: gray;\n}', why: 'Цвет текста — просто color. Выдуманные свойства браузер молча пропускает (в DevTools — жёлтый треугольник).' },
-  { title: 'Пробел перед px', lang: 'css', bad: 'h1 {\n  font-size: 40 px;\n}', good: 'h1 {\n  font-size: 40px;\n}', why: 'Число и единица пишутся слитно: 40px. С пробелом значение неверное — свойство пропускается.' },
-  { title: 'Стили не подключились', lang: 'html', bad: '<!-- файл называется style.css -->\n<link rel="stylesheet" href="styles.css">', good: '<link rel="stylesheet" href="style.css">', why: 'Путь и имя в href должны совпадать с файлом буква в букву. Лишняя s — и браузер не найдёт файл.' },
-  { title: 'Ссылка осталась синей', lang: 'css', bad: 'body {\n  color: white;\n  background-color: black;\n}\n/* текст белый, а ссылка — синяя */', good: 'body {\n  color: white;\n  background-color: black;\n}\n\na {\n  color: gold;\n}', why: 'У ссылки свой цвет от браузера — он сильнее унаследованного от body. Пишем правило для a.' },
-  { title: 'Точка перед тегом', lang: 'css', bad: '.h1 {\n  color: tomato;\n}', good: 'h1 {\n  color: tomato;\n}', why: 'Точка означает класс, а не тег. .h1 ищет элементы с class="h1". Для тега — просто h1.' },
+  { title: 'Нет точки с запятой', lang: 'css', bad: 'h1 {\n  color: navy\n  font-size: 40px;\n}', good: 'h1 {\n  color: navy;\n  font-size: 40px;\n}', why: 'Без `;` браузер читает «navy font-size: 40px» как одно значение `color` — invalid value, оба свойства выброшены.' },
+  { title: 'Такого свойства нет', lang: 'css', bad: 'p {\n  font-color: gray;\n  text-color: gray;\n}', good: 'p {\n  color: gray;\n}', why: 'Цвет текста — просто `color`. Unknown property — браузер молча пропускает (в DevTools — жёлтый треугольник).' },
+  { title: 'Пробел перед px', lang: 'css', bad: 'h1 {\n  font-size: 40 px;\n}', good: 'h1 {\n  font-size: 40px;\n}', why: 'Число и единица измерения (unit) — слитно: `40px`. С пробелом — invalid value, свойство пропускается.' },
+  { title: 'Стили не подключились', lang: 'html', bad: '<!-- файл называется style.css -->\n<link rel="stylesheet" href="styles.css">', good: '<link rel="stylesheet" href="style.css">', why: 'Путь в `href` должен совпасть с файлом буква в букву. Лишняя s — браузер не найдёт файл (в DevTools → Network: 404).' },
+  { title: 'Ссылка осталась синей', lang: 'css', bad: 'body {\n  color: white;\n  background-color: black;\n}\n/* текст белый, а ссылка — синяя */', good: 'body {\n  color: white;\n  background-color: black;\n}\n\na {\n  color: gold;\n}', why: 'У ссылки цвет из user agent stylesheet — он сильнее унаследованного от `body`. Пишем правило для `a`.' },
+  { title: 'Точка перед тегом', lang: 'css', bad: '.h1 {\n  color: tomato;\n}', good: 'h1 {\n  color: tomato;\n}', why: 'Точка — это class selector. `.h1` ищет элементы с `class="h1"`. Для тега — type selector, просто `h1`.' },
 ];
 
 const PRACTICE = {
   joint: {
     caption: 'materials/joint · 25 минут', zip: './materials/joint.zip', spec: './materials/view.html?p=joint', title: 'Кофейня «Утро»', files: 'index.html · style.css · img/',
     tasks: [
-      ['Каркас', '<!DOCTYPE html> · head · body', 'урок 2'],
-      ['Контент', 'h1 · p · img · h2 · ul · ol · a', 'урок 3'],
+      ['Каркас', '<!DOCTYPE html>', 'урок 2'],
+      ['Контент', '<h1> <p> <img> <ul> <ol> <a>', 'урок 3'],
       ['Подключить CSS', '<link rel="stylesheet">', 'НОВОЕ: link'],
-      ['Фон и текст', 'body { background-color; color }', 'НОВОЕ: цвет'],
-      ['Шрифт страницы', 'body { font-family; line-height }', 'НОВОЕ: наследование'],
-      ['Заголовки', 'h1, h2 { … } · h1 { … }', 'НОВОЕ: группа, каскад'],
-      ['Списки и ссылки', 'li { … } · a { … }', 'НОВОЕ: свой цвет у a'],
+      ['Фон и текст', 'background-color: …;', 'НОВОЕ: цвет'],
+      ['Шрифт страницы', 'font-family: …;', 'НОВОЕ: наследование'],
+      ['Заголовки', 'h1, h2 { }', 'НОВОЕ: группа, каскад'],
+      ['Списки и ссылки', 'li { } a { }', 'НОВОЕ: свой цвет у a'],
       ['Проверка', 'F12 → Elements → Styles', 'НОВОЕ: DevTools'],
     ],
   },
   solo: {
     caption: 'materials/solo · 15 минут', zip: './materials/solo.zip', spec: './materials/view.html?p=solo', title: 'Любимый фильм', files: 'index.html · style.css · img/',
     tasks: [
-      ['Каркас', '<!DOCTYPE html> · head · body', 'как в кофейне'],
-      ['Контент', 'h1 · p · img · h2 · ul · ol · a', 'как в кофейне'],
+      ['Каркас', '<!DOCTYPE html>', 'как в кофейне'],
+      ['Контент', '<h1> <p> <img> <ul> <ol> <a>', 'как в кофейне'],
       ['Подключить CSS', '<link rel="stylesheet">', 'как в кофейне'],
-      ['Тёмная тема', 'body { background-color; color }', 'тёмный фон — светлый текст'],
-      ['Шрифт', 'body { font-family; line-height }', 'с запасным шрифтом'],
-      ['Заголовки', 'h1, h2 { … }', 'через запятую'],
-      ['Списки и ссылки', 'li { … } · a { … }', 'ссылка не синяя'],
-      ['Бонус', 'rgb(…) · #hex · имя', 'все три формата'],
+      ['Тёмная тема', 'background-color: …;', 'тёмный фон — светлый текст'],
+      ['Шрифт', 'font-family: …;', 'с запасным шрифтом'],
+      ['Заголовки', 'h1, h2 { }', 'через запятую'],
+      ['Списки и ссылки', 'li { } a { }', 'ссылка не синяя'],
+      ['Бонус', 'rgb() #hex tomato', 'все три формата'],
     ],
   },
 };
 
+const GLOSSARY = [
+  ['Таблица стилей', 'stylesheet', '«стили», «цээска»', '<link rel="stylesheet">'],
+  ['Правило', 'rule / ruleset', '«правило»', 'h1 { color: red; }'],
+  ['Селектор', 'selector', '«селектор»', 'h1, h2'],
+  ['Селектор типа', 'type selector', '«по тегу»', 'p { }'],
+  ['Объявление', 'declaration', '«строчка стиля»', 'color: red;'],
+  ['Свойство · значение', 'property · value', '«проперти», «значение»', 'font-size: 18px;'],
+  ['Внешние · инлайн-стили', 'external · inline CSS', '«вынести в файл», «инлайн»', 'style="color: red;"'],
+  ['Наследование', 'inheritance', '«наследуется от родителя»', 'body { color: navy; }'],
+  ['Каскад', 'cascade · source order', '«перебивает», «переопределить»', 'p { } … p { }'],
+  ['Стили браузера', 'user agent stylesheet', '«дефолтные стили»', 'a { color: blue; }'],
+  ['Запасной шрифт', 'fallback font', '«фолбэк»', 'Georgia, serif'],
+  ['Межстрочный интервал', 'line-height', '«лайн-хайт», «интерлиньяж»', 'line-height: 1.6;'],
+  ['Контраст', 'contrast', '«текст не читается»', 'color: #fff;'],
+  ['Инструменты разработчика', 'DevTools', '«девтулзы», «инспектор»', 'F12'],
+];
+function glossaryView() {
+  return '<div class="gl-grid">' + GLOSSARY.map((g) => '<div class="gl-row"><div class="gl-ru"><b>' + esc(g[0]) + '</b><em>' + esc(g[1]) + '</em></div><span class="gl-say">' + esc(g[2]) + '</span>' + (g[3] === 'F12' ? '<code class="ic"><span class="token keyword">F12</span></code>' : inlineCode(g[3])) + '</div>').join('') + '</div>';
+}
+
 const SUMMARY = [
-  ['Подключение', ['В head: <code>&lt;link rel="stylesheet" href="style.css"&gt;</code>.', 'href — путь к файлу, как src у img: <code>css/style.css</code>.', 'Один файл стилей на весь сайт. <code>style="…"</code> и <code>&lt;style&gt;</code> — не используем.']],
-  ['Правило', ['<code>селектор { свойство: значение; }</code>', 'Свойство и значение — через <b>двоеточие</b>, в конце — <b>точка с запятой</b>.', 'Комментарий: <code>/* … */</code>.']],
-  ['Селекторы', ['По тегу: <code>p { }</code> — все абзацы страницы.', 'Группа: <code>h1, h2 { }</code> — одно правило на несколько тегов.', 'Имя тега пишем без <code>&lt; &gt;</code> и без точки.']],
-  ['Цвет и фон', ['<code>color</code> — цвет текста. <code>background-color</code> — цвет фона.', 'Записи цвета: <code>tomato</code> · <code>#ff6347</code> · <code>rgb(255, 99, 71)</code>.', 'Текст и фон должны контрастировать.']],
-  ['Шрифт', ['<code>font-family: Georgia, serif;</code> — всегда с запасным.', '<code>font-size: 18px;</code> · <code>font-weight: bold;</code> · <code>font-style: italic;</code>', '<code>line-height: 1.6;</code> · <code>text-align: center;</code> · <code>text-decoration: none;</code>']],
-  ['Наследование и каскад', ['Цвет и шрифт body наследуют все теги внутри.', 'Спор за одно свойство: побеждает <b>нижнее</b> правило. Остальные свойства складываются.', 'Не работает? F12 → Elements → Styles.']],
+  ['Подключение <em>external CSS</em>', ['В head: <code>&lt;link rel="stylesheet" href="style.css"&gt;</code>.', 'href — путь к файлу, как src у img: <code>css/style.css</code>.', 'Один файл стилей на весь сайт. Инлайн <code>style="…"</code> и <code>&lt;style&gt;</code> — не используем.']],
+  ['Правило <em>rule</em>', ['<code>селектор { свойство: значение; }</code>', 'Свойство и значение — через <b>двоеточие</b>, в конце — <b>точка с запятой</b>.', 'Комментарий: <code>/* … */</code>.']],
+  ['Селекторы <em>selectors</em>', ['По тегу: <code>p { }</code> — все абзацы страницы.', 'Группа: <code>h1, h2 { }</code> — одно правило на несколько тегов.', 'Имя тега — без угловых скобок и без точки: <code>p</code>, не <code>&lt;p&gt;</code> и не <code>.p</code>.']],
+  ['Цвет и фон <em>color · background</em>', ['<code>color</code> — цвет текста. <code>background-color</code> — цвет фона.', 'Записи цвета: <code>tomato</code> <code>#ff6347</code> <code>rgb(255, 99, 71)</code>', 'Текст и фон должны контрастировать.']],
+  ['Шрифт <em>typography</em>', ['<code>font-family: Georgia, serif;</code> — всегда с запасным.', '<code>font-size: 18px;</code> <code>font-weight: bold;</code> <code>font-style: italic;</code>', '<code>line-height: 1.6;</code> <code>text-align: center;</code> <code>text-decoration: none;</code>']],
+  ['Наследование и каскад <em>inheritance · cascade</em>', ['Цвет и шрифт body наследуют все теги внутри.', 'Спор за одно свойство: побеждает <b>нижнее</b> правило. Остальные свойства складываются.', 'Не работает? F12 → Elements → Styles.']],
 ];
 const EXCEPTIONS = [
   'Ссылка не берёт цвет от body: у <code>a</code> свой синий цвет от браузера. Пишем <code>a { color: … }</code>.',
@@ -237,6 +258,21 @@ function hlHTML(line) {
   }).join('');
 }
 const hl = (line, lang) => (lang === 'html' ? hlHTML(line) : hlCSS(line));
+const TAGS = /^\.?(html|head|body|title|link|style|meta|h[1-6]|p|a|img|ul|ol|li)(,\s*\.?(h[1-6]|p|a|li))*$/;
+// фрагмент кода внутри текста: <тег>, правило, объявление, тег или значение
+function inlineCode(t) {
+  t = String(t);
+  let html;
+  if (/^</.test(t)) html = hlHTML(t);
+  else if (/[{:]|\/\*/.test(t)) html = hlCSS(t);
+  else if (TAGS.test(t)) html = tok(t, 'keyword');
+  else if (/^(color|background(-color)?|font(-[a-z]+)?|line-height|text-[a-z]+|rel|href|src|alt|class|style)$/.test(t)) html = tok(t, 'method');
+  else html = hlVal(t);
+  return '<code class="ic">' + html + '</code>';
+}
+// текст с `кодом` в обратных кавычках
+const rich = (text) => String(text).split('`').map((part, i) => (i % 2 ? inlineCode(part) : esc(part))).join('');
+const term = (t) => (t ? '<span class="term"><b>термин</b>' + esc(t) + '</span>' : '');
 
 // opts: caption, lang, active: [номера строк], dimFrom: строки после — приглушить
 function codeWindow(code, opts = {}) {
@@ -260,21 +296,21 @@ function codeWindow(code, opts = {}) {
 function head(s) { return '<div class="intro"><span class="tag ' + (s.type === 'practice' ? 'green' : s.type === 'quiz' ? 'cyan' : '') + '">' + (s.label || '04 / CSS') + '</span><h2>' + s.title + '</h2><p>' + s.lead + '</p></div>'; }
 
 // Предпросмотр страницы в «браузере»
-function pageDoc(html, css) {
+function pageDoc(html, css, zoom = 0.8) {
   const base = location.href.replace(/[#?].*$/, '').replace(/[^/]*$/, '');
-  return '<!doctype html><html><head><meta charset="utf-8"><base href="' + base + '" target="_blank"><style>html{zoom:.72}</style><style>' + css + '</style></head><body>' + html + '</body></html>';
+  return '<!doctype html><html><head><meta charset="utf-8"><base href="' + base + '" target="_blank"><style>html{zoom:' + zoom + '}@keyframes flash{0%,100%{outline:4px solid transparent;outline-offset:6px}35%,65%{outline:4px solid #7956f7;outline-offset:6px}}</style><style>' + css + '</style></head><body>' + html + '</body></html>';
 }
-function browser(html, css, caption = 'index.html', id = '') {
-  return '<div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="addr">' + esc(caption) + '</span></div><iframe class="pv"' + (id ? ' id="' + id + '"' : '') + ' title="Предпросмотр страницы" srcdoc="' + esc(pageDoc(html, css)) + '"></iframe></div>';
+function browser(html, css, caption = 'index.html', id = '', zoom = 0.8) {
+  return '<div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="addr">' + esc(caption) + '</span></div><iframe class="pv"' + (id ? ' id="' + id + '"' : '') + ' title="Предпросмотр страницы" srcdoc="' + esc(pageDoc(html, css, zoom)) + '"></iframe></div>';
 }
 
 function quiz(s, st) {
   const answered = Number.isInteger(st.answer);
-  return '<div class="quiz-grid"><div class="quiz-left"><div class="quiz-question">' + esc(s.question) + '</div><div class="quiz-options">' + s.choices.map((c, i) => '<button class="answer-option ' + (answered ? (i === s.correct ? 'correct' : i === st.answer ? 'wrong' : '') : '') + ' ' + (st.answer === i ? 'selected' : '') + '" data-action="answer" data-value="' + i + '" aria-pressed="' + (st.answer === i) + '"><b style="display:inline-block;width:24px;color:var(--purple)">' + String.fromCharCode(65 + i) + '.</b> ' + esc(c) + '</button>').join('') + '</div>' + (answered ? '<div class="feedback ' + (st.answer === s.correct ? '' : 'warn') + '">' + (st.answer === s.correct ? '✓ Верно. ' : 'Не совсем. ') + esc(s.explain) + '</div><button class="small-btn" data-action="reset-answer">Ответить ещё раз ↺</button>' : '<p class="action-hint">Выберите вариант — появится разбор.</p>') + '</div><div class="quiz-right">' + codeWindow(s.code, { lang: s.lang, caption: s.file }) + '</div></div>';
+  return '<div class="quiz-grid"><div class="quiz-left"><div class="quiz-question">' + esc(s.question) + '</div><div class="quiz-options">' + s.choices.map((c, i) => '<button class="answer-option ' + (answered ? (i === s.correct ? 'correct' : i === st.answer ? 'wrong' : '') : '') + ' ' + (st.answer === i ? 'selected' : '') + '" data-action="answer" data-value="' + i + '" aria-pressed="' + (st.answer === i) + '"><b style="display:inline-block;width:24px;color:var(--purple)">' + String.fromCharCode(65 + i) + '.</b> ' + esc(c) + '</button>').join('') + '</div>' + (answered ? '<div class="feedback ' + (st.answer === s.correct ? '' : 'warn') + '">' + (st.answer === s.correct ? '✓ Верно. ' : 'Не совсем. ') + rich(s.explain) + '</div><button class="small-btn" data-action="reset-answer">Ответить ещё раз ↺</button>' : '<p class="action-hint">Выберите вариант — появится разбор.</p>') + '</div><div class="quiz-right">' + codeWindow(s.code, { lang: s.lang, caption: s.file }) + '</div></div>';
 }
 
 function theoryView(s) {
-  return '<div class="pair"><div class="pane left"><div class="pane-heading">КОД</div>' + codeWindow(s.code, { lang: s.lang, caption: s.file }) + '</div><div class="pane right theory-pane">' + s.items.map((x, i) => '<div class="concept"><span>' + String(i + 1).padStart(2, '0') + '</span><div><h3>' + esc(x[0]) + '</h3><p>' + esc(x[1]) + '</p></div></div>').join('') + '</div></div>';
+  return '<div class="pair"><div class="pane left"><div class="pane-heading">КОД</div>' + codeWindow(s.code, { lang: s.lang, caption: s.file }) + '</div><div class="pane right theory-pane">' + s.items.map((x, i) => '<div class="concept"><span>' + String(i + 1).padStart(2, '0') + '</span><div><h3>' + esc(x[0]) + '</h3><p>' + rich(x[1]) + '</p>' + term(x[2]) + '</div></div>').join('') + '</div></div>';
 }
 
 function beforeAfter(st) {
@@ -289,20 +325,21 @@ function tabsView(st) {
   const verdict = { bad: ['✗', 'Не используем'], mid: ['~', 'Иногда'], good: ['✓', 'Так делаем'] }[t.verdict];
   return '<div class="tabs-row">' + TABS.map((x, k) => '<button class="tab-btn ' + (k === i ? 'active' : '') + '" data-action="tab" data-value="' + k + '"><span>' + (k + 1) + '</span>' + esc(x.name) + '</button>').join('') + '</div>'
     + '<div class="pair"><div class="pane left"><div class="pane-heading"><span>' + esc(t.title.toUpperCase()) + '</span><span>' + t.files.length + (t.files.length > 1 ? ' ФАЙЛА' : ' ФАЙЛ') + '</span></div>' + t.files.map((f) => codeWindow(f[2], { caption: f[0], lang: f[1] })).join('') + '</div>'
-    + '<div class="pane right"><div class="pane-heading"><span>РЕЗУЛЬТАТ</span></div>' + browser(t.html, t.css) + '<div class="verdict ' + t.verdict + '"><b>' + verdict[0] + ' ' + verdict[1] + '</b><p>' + esc(t.text) + '</p></div></div></div>';
+    + '<div class="pane right"><div class="pane-heading"><span>РЕЗУЛЬТАТ</span></div>' + browser(t.html, t.css) + '<div class="verdict ' + t.verdict + '"><b>' + verdict[0] + ' ' + verdict[1] + '</b><p>' + rich(t.text) + '</p></div></div></div>';
 }
 
 function anatomyView(st) {
   const idx = Math.max(0, Math.min(st.step || 0, ANATOMY.length - 1));
   const part = ANATOMY[idx][0];
-  const P = (name, text) => '<span class="ana ' + (name === part ? 'on' : '') + '">' + text + '</span>';
-  const decl = (prop, val) => '<span class="ana-decl ' + (part === 'decl' ? 'on' : '') + '">' + P('prop', prop) + P('colon', ':') + ' ' + P('val', val) + P('semi', ';') + '</span>';
-  const code = P('sel', 'h1') + ' ' + P('brace', '{') + '\n  ' + decl('color', 'tomato') + '\n  ' + decl('font-size', '40px') + '\n' + P('brace', '}');
+  const P = (name, text, cls) => '<span class="ana token ' + cls + ' ' + (name === part ? 'on' : '') + '">' + text + '</span>';
+  const decl = (prop, val) => '<span class="ana-decl ' + (part === 'decl' ? 'on' : '') + '">' + P('prop', prop, 'method') + P('colon', ':', 'operator') + ' ' + P('val', val, /^\d/.test(val) ? 'number' : 'string') + P('semi', ';', 'operator') + '</span>';
+  const code = P('sel', 'h1', 'keyword') + ' ' + P('brace', '{', 'operator') + '\n  ' + decl('color', 'tomato') + '\n  ' + decl('font-size', '40px') + '\n' + P('brace', '}', 'operator');
+  const a = ANATOMY[idx];
   return '<div class="pair"><div class="pane left"><div class="pane-heading"><span>style.css</span><span>' + (idx + 1) + ' / ' + ANATOMY.length + '</span></div><pre class="ana-code">' + code + '</pre>'
-    + '<div class="ana-label"><b>' + esc(ANATOMY[idx][1]) + '</b><p>' + esc(ANATOMY[idx][2]) + '</p></div>'
+    + '<div class="ana-label"><b>' + esc(a[1]) + ' <em>' + esc(a[2]) + '</em></b><p>' + rich(a[3]) + '</p></div>'
     + '<div class="buttons"><button class="secondary" data-action="prev-step" ' + (idx === 0 ? 'disabled' : '') + '>← Шаг назад</button><button class="primary" data-action="next-step" ' + (idx === ANATOMY.length - 1 ? 'disabled' : '') + '>Следующий шаг →</button><button class="secondary" data-action="reset-step" title="Сначала">↺</button></div></div>'
-    + '<div class="pane right"><div class="pane-heading"><span>СЛОВАРЬ</span><span>РЕЗУЛЬТАТ</span></div><div class="ana-dict">' + ANATOMY.map((a, k) => '<button class="ana-term ' + (k === idx ? 'on' : '') + '" data-action="set-step" data-value="' + k + '"><span>' + esc(a[1]) + '</span></button>').join('') + '</div>'
-    + browser('<h1>Кофейня «Утро»</h1>\n<p>Свежий кофе каждый день.</p>', 'h1 { color: tomato; font-size: 40px; }') + '</div></div>';
+    + '<div class="pane right"><div class="pane-heading"><span>СЛОВАРЬ: ПО-РУССКИ · КАК ГОВОРЯТ В КОМАНДЕ</span></div><div class="ana-dict">' + ANATOMY.map((x, k) => '<button class="ana-term ' + (k === idx ? 'on' : '') + '" data-action="set-step" data-value="' + k + '"><span>' + esc(x[1]) + '</span><em>' + esc(x[2]) + '</em></button>').join('') + '</div>'
+    + browser('<h1>Кофейня «Утро»</h1>\n<p>Свежий кофе каждый день.</p>', 'h1 { color: tomato; font-size: 40px; }', 'index.html', '', 1) + '</div></div>';
 }
 
 function liveView(kind, st) {
@@ -318,10 +355,12 @@ function liveView(kind, st) {
     if (k === idx - 1) dimFrom = lineNo;
   });
   if (idx === 0) dimFrom = -1;
-  const applied = d.base + d.rules.slice(0, idx).map((r) => r[0]).join('\n');
-  const label = idx === 0 ? d.start : d.rules[idx - 1][1];
+  const cur = idx ? d.rules[idx - 1] : null;
+  const flashSel = cur ? (cur[3] || (cur[0].includes('{') ? cur[0].split('{')[0].trim() : '')) : '';
+  const applied = d.base + d.rules.slice(0, idx).map((r) => r[0]).join('\n') + (flashSel ? '\n' + flashSel + '{animation:flash 1.1s ease 2}' : '');
+  const label = cur ? rich(cur[1]) + term(cur[2]) : esc(d.start);
   return '<div class="pair live-pair"><div class="pane left"><div class="pane-heading"><span>style.css</span><span class="caps">' + (idx === 0 ? 'ЕЩЁ НИЧЕГО' : 'ПРАВИЛ: ' + idx) + '</span></div>' + codeWindow(code, { active, dimFrom: idx === 0 ? 0.5 : dimFrom }) + '</div>'
-    + '<div class="pane right"><div class="pane-heading"><span>РЕЗУЛЬТАТ</span><span>' + idx + ' / ' + total + '</span></div><div class="mem-step">' + esc(label) + '</div>' + browser(PAGE, applied)
+    + '<div class="pane right"><div class="pane-heading"><span>РЕЗУЛЬТАТ</span><span>' + idx + ' / ' + total + '</span></div><div class="mem-step">' + label + '</div>' + browser(PAGE, applied, 'index.html', '', 0.9)
     + '<div class="buttons"><button class="secondary" data-action="prev-step" ' + (idx === 0 ? 'disabled' : '') + '>← Шаг назад</button><button class="primary" data-action="next-step" ' + (idx === total ? 'disabled' : '') + '>Следующий шаг →</button><button class="secondary" data-action="reset-step" title="Сначала">↺</button></div></div></div>';
 }
 const liveSteps = (s) => (s.type === 'live' ? LIVE[s.demo].rules.length : s.type === 'anatomy' ? ANATOMY.length - 1 : 0);
@@ -374,16 +413,26 @@ function devtoolsView(st) {
     const inh = body.decls.filter((d) => INHERITED.includes(d[0]));
     styles += '<div class="dt-inh">Унаследовано от <b>body</b></div><div class="dt-rule"><div class="dt-sel">body {<span class="dt-src">style.css</span></div>' + inh.map((d) => decl(d[0], d[1], 0, st.off['0:' + d[0]] || ownProps.has(d[0]) || uaProps.has(d[0]))).join('') + '<div class="dt-end">}</div></div>';
   }
-  return '<div class="pair dt-pair"><div class="pane left"><div class="pane-heading"><span>СТРАНИЦА</span><span>выбран: ' + esc(sel) + '</span></div>' + browser(PAGE, devCSS(st, sel)) + '</div>'
+  return '<div class="pair dt-pair"><div class="pane left"><div class="pane-heading"><span>СТРАНИЦА</span><span>выбран: &lt;' + esc(sel) + '&gt;</span></div><div class="dt-banner ' + (st.msg ? 'on' : '') + '">' + (st.msg || 'Кликните по тегу в Elements, снимите галочку у свойства — и смотрите на страницу.') + '</div>' + browser(PAGE, devCSS(st, sel), 'index.html', '', 1) + '</div>'
     + '<div class="pane right devtools"><div class="dt-tabs"><span class="on">Elements</span><span>Console</span><span>Sources</span></div><div class="dt-body"><div class="dt-tree">'
     + DEV_TREE.map(([t, lvl, label]) => '<button class="dt-node ' + (t === sel ? 'on' : '') + '" style="padding-left:' + (10 + lvl * 16) + 'px" data-action="dt-pick" data-value="' + t + '">' + hlHTML(label) + '</button>').join('')
     + '</div><div class="dt-styles"><div class="dt-subtabs"><span class="on">Styles</span><span>Computed</span></div>' + styles + '</div></div></div></div>';
 }
 
-// Песочница
+// Песочница: прозрачный textarea поверх подсвеченного кода
+function pgPaint(css) {
+  let inComment = false;
+  return String(css).split('\n').map((line) => {
+    if (!line) return '';
+    let pre = '', rest = line;
+    if (inComment) { const end = line.indexOf('*/'); if (end < 0) return tok(line, 'comment'); pre = tok(line.slice(0, end + 2), 'comment'); rest = line.slice(end + 2); inComment = false; }
+    const open = rest.lastIndexOf('/*'); if (open >= 0 && rest.indexOf('*/', open) < 0) inComment = true;
+    return pre + hlCSS(rest);
+  }).join('\n') + '\n';
+}
 function playgroundView(st) {
   if (st.css === undefined) st.css = PLAY_PRESETS['Кофейня'];
-  return '<div class="pair"><div class="pane left"><div class="pane-heading"><span>style.css — можно печатать</span><span class="pg-presets">' + Object.keys(PLAY_PRESETS).map((k) => '<button class="small-btn" data-action="play-preset" data-value="' + esc(k) + '">' + esc(k) + '</button>').join('') + '</span></div><textarea class="pg-text" id="pgText" spellcheck="false" aria-label="CSS-код">' + esc(st.css) + '</textarea></div>'
+  return '<div class="pair"><div class="pane left"><div class="pane-heading"><span>style.css — можно печатать</span><span class="pg-presets">' + Object.keys(PLAY_PRESETS).map((k) => '<button class="small-btn" data-action="play-preset" data-value="' + esc(k) + '">' + esc(k) + '</button>').join('') + '</span></div><div class="pg-wrap"><pre class="pg-hl" id="pgHl" aria-hidden="true">' + pgPaint(st.css) + '</pre><textarea class="pg-text" id="pgText" spellcheck="false" aria-label="CSS-код">' + esc(st.css) + '</textarea></div></div>'
     + '<div class="pane right"><div class="pane-heading"><span>РЕЗУЛЬТАТ</span><span>обновляется при вводе</span></div>' + browser(PAGE, st.css, 'index.html', 'pgFrame') + '</div></div>';
 }
 
@@ -393,7 +442,7 @@ function bugsView(st) {
   const cap = b.lang === 'html' ? 'index.html' : 'style.css';
   return '<div class="bugs2"><div class="bug-list">' + BUGS.map((x, k) => '<button class="bug-tab ' + (k === i ? 'active' : '') + ' ' + (st.open[k] ? 'done' : '') + '" data-action="bug-pick" data-value="' + k + '"><span>' + String(k + 1).padStart(2, '0') + '</span>' + esc(x.title) + '</button>').join('') + '</div>'
     + '<div class="bug-main"><div class="bug-col"><div class="caps bad-cap">✗ С ОШИБКОЙ</div>' + codeWindow(b.bad, { lang: b.lang, caption: cap }) + '</div>'
-    + (open ? '<div class="bug-col"><div class="caps good-cap">✓ ИСПРАВЛЕНО</div>' + codeWindow(b.good, { lang: b.lang, caption: cap }) + '<p class="bug-why">' + esc(b.why) + '</p></div>'
+    + (open ? '<div class="bug-col"><div class="caps good-cap">✓ ИСПРАВЛЕНО</div>' + codeWindow(b.good, { lang: b.lang, caption: cap }) + '<p class="bug-why">' + rich(b.why) + '</p></div>'
       : '<div class="bug-hidden"><p>Почему не работает? Ответьте вслух.</p><button class="primary" data-action="bug" data-value="' + i + '">Показать исправление</button></div>')
     + '</div></div>';
 }
@@ -403,7 +452,7 @@ function practice(s, st) {
   const joint = s.practice === 'joint';
   const remaining = st.remaining ?? s.minutes * 60;
   return '<div class="practice-layout"><div class="task-list"><div class="pane-heading">ШАГ → ЧТО ПИШЕМ → ' + (joint ? 'ПОВТОРЯЕМ / НОВОЕ' : 'ПОДСКАЗКА') + '<span>index.html · style.css</span></div>'
-    + p.tasks.map((x, i) => '<div class="task-step pr-row"><i>' + String(i + 1).padStart(2, '0') + '</i><div class="pr-btn">' + esc(x[0]) + '</div><code>' + esc(x[1]) + '</code><div class="pr-ret">→ ' + esc(x[2]) + '</div></div>').join('')
+    + p.tasks.map((x, i) => '<div class="task-step pr-row"><i>' + String(i + 1).padStart(2, '0') + '</i><div class="pr-btn">' + esc(x[0]) + '</div>' + (/→/.test(x[1]) ? '<code class="ic">' + esc(x[1]) + '</code>' : inlineCode(x[1])) + '<div class="pr-ret">→ ' + esc(x[2]) + '</div></div>').join('')
     + '<div class="tip">В файлах нет кода — только <b>ТЗ в комментариях</b>: что сделать, зачем и «Проверка». Пишем всё с нуля под каждым пунктом.</div></div>'
     + '<div class="task-side"><div class="goal"><span class="caps">' + esc(p.caption) + '</span><h3>' + esc(p.title) + '</h3>'
     + '<ol class="flow"><li>Распаковать ZIP, открыть папку в <b>VS Code</b></li><li>Открыть <b>index.html</b> в браузере (двойной клик)</li><li>Пункт ТЗ → код → <b>Ctrl+S</b> → <b>F5</b> в браузере</li></ol>'
@@ -458,10 +507,12 @@ function render(isNavigation) {
     case 'bugs': content = head(s) + bugsView(st); break;
     case 'practice': content = head(s) + practice(s, st); break;
     case 'summary': content = head(s) + summaryView(s); break;
+    case 'glossary': content = head(s) + glossaryView(); break;
     case 'end': content = finish(); break;
   }
   stage.innerHTML = '<section class="slide active ' + (isNavigation ? '' : 'instant') + ' ' + (s.type === 'cover' ? 'cover' : '') + ' type-' + s.type + '" aria-label="Слайд ' + (current + 1) + ' из ' + slides.length + '">' + (s.type === 'cover' || s.type === 'end' ? content : '<div class="slide-content">' + content + '</div>') + '</section>';
   if (s.type === 'color') paintMixer();
+  stage.querySelectorAll('.sum-card code, .exc-card code').forEach((c) => { c.outerHTML = inlineCode(c.textContent); });
   stage.querySelectorAll('.code-pre').forEach((pre) => { const a = pre.querySelector('.active-line'); if (a) pre.scrollTop = Math.max(0, a.offsetTop - pre.clientHeight / 3); });
   document.getElementById('sectionTitle').textContent = s.section;
   document.getElementById('currentTitle').textContent = removeTags(s.title);
@@ -497,7 +548,7 @@ stage.addEventListener('click', (e) => {
   if (action === 'ba') { st.on = v === '1'; render(false); return; }
   if (action === 'tab') { st.tab = Number(v); render(false); return; }
   if (action === 'preset-color') { const [r, g, b] = v.split(',').map(Number); Object.assign(st, { r, g, b }); ['r', 'g', 'b'].forEach((k) => { stage.querySelector('[data-ch="' + k + '"]').value = st[k]; }); paintMixer(); return; }
-  if (action === 'dt-pick') { st.el = v; render(false); return; }
+  if (action === 'dt-pick') { st.el = v; st.msg = 'Выбран ' + inlineCode('<' + v + '>') + ' — справа все стили, которые на него действуют.'; render(false); return; }
   if (action === 'play-preset') { st.css = PLAY_PRESETS[v]; render(false); return; }
   if (action === 'bug') { st.open = st.open || {}; st.open[Number(v)] = true; render(false); return; }
   if (action === 'bug-pick') { st.bug = Number(v); render(false); return; }
@@ -508,13 +559,29 @@ stage.addEventListener('input', (e) => {
   if (t.dataset.ch) { st[t.dataset.ch] = Number(t.value); paintMixer(); return; }
   if (t.id === 'pgText') {
     st.css = t.value;
+    const hlBox = document.getElementById('pgHl'); if (hlBox) hlBox.innerHTML = pgPaint(st.css);
     clearTimeout(playTimer);
     playTimer = setTimeout(() => { const f = document.getElementById('pgFrame'); if (f) f.srcdoc = pageDoc(PAGE, st.css); }, 150);
   }
 });
+stage.addEventListener('scroll', (e) => {
+  if (e.target.id === 'pgText') { const h = document.getElementById('pgHl'); if (h) { h.scrollTop = e.target.scrollTop; h.scrollLeft = e.target.scrollLeft; } }
+}, true);
+stage.addEventListener('keydown', (e) => {
+  if (e.target.id === 'pgText' && e.key === 'Tab') {
+    e.preventDefault(); const t = e.target, a = t.selectionStart;
+    t.setRangeText('  ', a, t.selectionEnd, 'end'); t.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+});
 stage.addEventListener('change', (e) => {
   const t = e.target;
-  if (t.dataset.off) { const st = state(); st.off = st.off || {}; st.off[t.dataset.off] = !t.checked; render(false); }
+  if (t.dataset.off) {
+    const st = state(); st.off = st.off || {}; st.off[t.dataset.off] = !t.checked;
+    const [ri, prop] = t.dataset.off.split(':');
+    const rule = DEV_RULES[ri], val = rule.decls.find((d) => d[0] === prop)[1];
+    st.msg = (t.checked ? '✓ Включили ' : '✕ Выключили ') + inlineCode(prop + ': ' + val + ';') + ' в правиле ' + inlineCode(rule.sel + ' { }') + (t.checked ? '' : ' — что изменилось на странице?');
+    render(false);
+  }
 });
 document.getElementById('prevBtn').addEventListener('click', () => go(current - 1));
 document.getElementById('nextBtn').addEventListener('click', () => go(current + 1));
