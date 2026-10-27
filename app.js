@@ -1,7 +1,7 @@
 "use strict";
 /* HTML & CSS · Урок 4 · Подключение CSS: цвет, фон, шрифт
    Слайды описаны данными ниже. Типы: cover, quiz, theory, beforeafter, tabs, anatomy, live, color, devtools,
-   playground, bugs, practice, glossary, summary, end. */
+   bugs, practice, glossary, summary, end. */
 
 // ───────── Страница-пример для всех предпросмотров
 const PAGE = '<h1>Кофейня «Утро»</h1>\n<p>Свежий кофе с 8:00. Мы в <a href="https://instagram.com">Instagram</a> — пишите!</p>\n<h2>Меню</h2>\n<ul>\n  <li>Капучино — 180 сом</li>\n  <li>Латте — 200 сом</li>\n  <li>Круассан — 120 сом</li>\n</ul>\n<img src="assets/coffee.svg" alt="Чашка кофе">';
@@ -77,13 +77,12 @@ const slides = [
     code: 'p {\n  color: red;\n  font-size: 20px;\n}\n\np {\n  color: green;\n}', question: 'Как будет выглядеть p?', choices: ['Красный, 20px', 'Зелёный, 20px', 'Зелёный, обычного размера'], correct: 1,
     explain: 'За `color` спорят два правила — побеждает нижнее: `green`. `font-size` никто не переопределил (override) — остаётся `20px`.', notes: '' },
   { type: 'devtools', label: '16 / DEVTOOLS', section: 'DevTools', title: 'DevTools: <em>откуда этот стиль?</em>', lead: 'F12 → Elements → Styles. Выберите тег слева, отключайте свойства галочками.', minutes: 3, notes: 'Это копия настоящей панели Chrome. Покажите: 1) a — цвет body перечёркнут, потому что у ссылки свой цвет от браузера; 2) снимите галочку — стиль выключится; 3) потом откройте настоящий F12 на любом сайте. Главный инструмент, когда «стиль не работает».' },
-  { type: 'playground', label: '17 / ПЕСОЧНИЦА', section: 'Песочница', title: 'Попробуйте <em>сами</em>', lead: 'Меняйте CSS слева — страница справа обновляется сразу. Можно звать учеников к доске.', minutes: 2, notes: 'По желанию, если есть время. Дайте ученику задание: «сделайте ночную тему» — тёмный фон, светлый текст.' },
-  { type: 'bugs', label: '18 / ОТЛАДКА', section: 'Ошибки', title: 'Почему <em>не работает</em>?', lead: 'Сначала группа объясняет причину. Потом откройте исправление.', minutes: 4, notes: 'Эти ошибки будут на практике у каждого. Главное правило: CSS не ругается — он молча пропускает. Поэтому смотрим в DevTools.' },
-  { type: 'practice', practice: 'joint', label: '19 / ВМЕСТЕ', section: 'Практика', title: 'Вместе: <em>сайт кофейни</em>', lead: 'С нуля по ТЗ: каркас и контент — повторение, потом подключаем CSS и красим шаг за шагом.', minutes: 25, notes: 'Подробный сценарий — teacher/JOINT-GUIDE.md. VS Code слева, браузер справа. После каждого шага: Ctrl+S → F5. Если стиль не применился — сразу открываем DevTools, а не гадаем.' },
-  { type: 'practice', practice: 'solo', label: '20 / САМИ', section: 'Практика', title: 'Самостоятельно: <em>любимый фильм</em>', lead: 'Те же шаги, своя страница и тёмная тема. Подглядывать в совместную практику можно.', minutes: 15, notes: 'Не подсказывайте код — спрашивайте: «какой селектор?», «какое свойство меняет цвет текста?». Тёмная тема проверяет понимание color vs background-color.' },
-  { type: 'glossary', label: '21 / СЛОВАРЬ', section: 'Итог', title: 'Словарь <em>разработчика</em>', lead: 'Так эти вещи называют в документации, на собеседованиях и в команде. Русский термин — английский — как говорят вслух.', minutes: 3, notes: 'Пройдитесь по строкам: вы говорите русский термин — группа хором английский. Объясните, что гуглить лучше по-английски: «css inheritance», «user agent stylesheet» — ответов в разы больше.' },
-  { type: 'summary', part: 'concepts', label: '22 / ШПАРГАЛКА 1/2', section: 'Итог', title: 'Шпаргалка: <em>главные понятия</em>', lead: 'Весь урок на одном экране. Листать презентацию не нужно — можно скачать или распечатать.', minutes: 3, notes: 'Пусть ученики сфотографируют или скачают. Пройдитесь по каждому блоку одной фразой.' },
-  { type: 'summary', part: 'exceptions', label: '23 / ШПАРГАЛКА 2/2', section: 'Итог', title: 'Шпаргалка: <em>исключения и ловушки</em>', lead: 'Именно эти случаи дают ошибки в домашке. Проверьте себя по списку.', minutes: 2, notes: 'Спросите 2–3 пункта: «почему так?» — без подсказки.' },
+  { type: 'bugs', label: '17 / ОТЛАДКА', section: 'Ошибки', title: 'Почему <em>не работает</em>?', lead: 'Сначала группа объясняет причину. Потом откройте исправление.', minutes: 4, notes: 'Эти ошибки будут на практике у каждого. Главное правило: CSS не ругается — он молча пропускает. Поэтому смотрим в DevTools.' },
+  { type: 'practice', practice: 'joint', label: '18 / ВМЕСТЕ', section: 'Практика', title: 'Вместе: <em>сайт кофейни</em>', lead: 'С нуля по ТЗ: каркас и контент — повторение, потом подключаем CSS и красим шаг за шагом.', minutes: 25, notes: 'Подробный сценарий — teacher/JOINT-GUIDE.md. VS Code слева, браузер справа. После каждого шага: Ctrl+S → F5. Если стиль не применился — сразу открываем DevTools, а не гадаем.' },
+  { type: 'practice', practice: 'solo', label: '19 / САМИ', section: 'Практика', title: 'Самостоятельно: <em>любимый фильм</em>', lead: 'Те же шаги, своя страница и тёмная тема. Подглядывать в совместную практику можно.', minutes: 15, notes: 'Не подсказывайте код — спрашивайте: «какой селектор?», «какое свойство меняет цвет текста?». Тёмная тема проверяет понимание color vs background-color.' },
+  { type: 'glossary', label: '20 / СЛОВАРЬ', section: 'Итог', title: 'Словарь <em>разработчика</em>', lead: 'Так эти вещи называют в документации, на собеседованиях и в команде. Русский термин — английский — как говорят вслух.', minutes: 3, notes: 'Пройдитесь по строкам: вы говорите русский термин — группа хором английский. Объясните, что гуглить лучше по-английски: «css inheritance», «user agent stylesheet» — ответов в разы больше.' },
+  { type: 'summary', part: 'concepts', label: '21 / ШПАРГАЛКА 1/2', section: 'Итог', title: 'Шпаргалка: <em>главные понятия</em>', lead: 'Весь урок на одном экране. Листать презентацию не нужно — можно скачать или распечатать.', minutes: 3, notes: 'Пусть ученики сфотографируют или скачают. Пройдитесь по каждому блоку одной фразой.' },
+  { type: 'summary', part: 'exceptions', label: '22 / ШПАРГАЛКА 2/2', section: 'Итог', title: 'Шпаргалка: <em>исключения и ловушки</em>', lead: 'Именно эти случаи дают ошибки в домашке. Проверьте себя по списку.', minutes: 2, notes: 'Спросите 2–3 пункта: «почему так?» — без подсказки.' },
   { type: 'end', title: 'Готово', section: 'Итог', minutes: 1, notes: 'Домашнее задание: страница-рецепт, CSS в отдельной папке css/. ТЗ — в комментариях файлов.' },
 ];
 
@@ -301,7 +300,7 @@ function pageDoc(html, css, zoom = 0.8) {
   return '<!doctype html><html><head><meta charset="utf-8"><base href="' + base + '" target="_blank"><style>html{zoom:' + zoom + '}@keyframes flash{0%,100%{outline:4px solid transparent;outline-offset:6px}35%,65%{outline:4px solid #7956f7;outline-offset:6px}}</style><style>' + css + '</style></head><body>' + html + '</body></html>';
 }
 function browser(html, css, caption = 'index.html', id = '', zoom = 0.8) {
-  return '<div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="addr">' + esc(caption) + '</span></div><iframe class="pv"' + (id ? ' id="' + id + '"' : '') + ' title="Предпросмотр страницы" srcdoc="' + esc(pageDoc(html, css, zoom)) + '"></iframe></div>';
+  return '<div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="addr">' + esc(caption) + '</span></div><iframe class="pv" tabindex="-1"' + (id ? ' id="' + id + '"' : '') + ' title="Предпросмотр страницы" srcdoc="' + esc(pageDoc(html, css, zoom)) + '"></iframe></div>';
 }
 
 function quiz(s, st) {
@@ -324,7 +323,7 @@ function tabsView(st) {
   const i = st.tab || 0, t = TABS[i];
   const verdict = { bad: ['✗', 'Не используем'], mid: ['~', 'Иногда'], good: ['✓', 'Так делаем'] }[t.verdict];
   return '<div class="tabs-row">' + TABS.map((x, k) => '<button class="tab-btn ' + (k === i ? 'active' : '') + '" data-action="tab" data-value="' + k + '"><span>' + (k + 1) + '</span>' + esc(x.name) + '</button>').join('') + '</div>'
-    + '<div class="pair"><div class="pane left"><div class="pane-heading"><span>' + esc(t.title.toUpperCase()) + '</span><span>' + t.files.length + (t.files.length > 1 ? ' ФАЙЛА' : ' ФАЙЛ') + '</span></div>' + t.files.map((f) => codeWindow(f[2], { caption: f[0], lang: f[1] })).join('') + '</div>'
+    + '<div class="pair tabs-pair"><div class="pane left"><div class="pane-heading"><span>' + esc(t.title.toUpperCase()) + '</span><span>' + t.files.length + (t.files.length > 1 ? ' ФАЙЛА' : ' ФАЙЛ') + '</span></div>' + t.files.map((f) => codeWindow(f[2], { caption: f[0], lang: f[1] })).join('') + '</div>'
     + '<div class="pane right"><div class="pane-heading"><span>РЕЗУЛЬТАТ</span></div>' + browser(t.html, t.css) + '<div class="verdict ' + t.verdict + '"><b>' + verdict[0] + ' ' + verdict[1] + '</b><p>' + rich(t.text) + '</p></div></div></div>';
 }
 
@@ -334,34 +333,26 @@ function anatomyView(st) {
   const P = (name, text, cls) => '<span class="ana token ' + cls + ' ' + (name === part ? 'on' : '') + '">' + text + '</span>';
   const decl = (prop, val) => '<span class="ana-decl ' + (part === 'decl' ? 'on' : '') + '">' + P('prop', prop, 'method') + P('colon', ':', 'operator') + ' ' + P('val', val, /^\d/.test(val) ? 'number' : 'string') + P('semi', ';', 'operator') + '</span>';
   const code = P('sel', 'h1', 'keyword') + ' ' + P('brace', '{', 'operator') + '\n  ' + decl('color', 'tomato') + '\n  ' + decl('font-size', '40px') + '\n' + P('brace', '}', 'operator');
-  const a = ANATOMY[idx];
-  return '<div class="pair"><div class="pane left"><div class="pane-heading"><span>style.css</span><span>' + (idx + 1) + ' / ' + ANATOMY.length + '</span></div><pre class="ana-code">' + code + '</pre>'
-    + '<div class="ana-label"><b>' + esc(a[1]) + ' <em>' + esc(a[2]) + '</em></b><p>' + rich(a[3]) + '</p></div>'
-    + '<div class="buttons"><button class="secondary" data-action="prev-step" ' + (idx === 0 ? 'disabled' : '') + '>← Шаг назад</button><button class="primary" data-action="next-step" ' + (idx === ANATOMY.length - 1 ? 'disabled' : '') + '>Следующий шаг →</button><button class="secondary" data-action="reset-step" title="Сначала">↺</button></div></div>'
-    + '<div class="pane right"><div class="pane-heading"><span>СЛОВАРЬ: ПО-РУССКИ · КАК ГОВОРЯТ В КОМАНДЕ</span></div><div class="ana-dict">' + ANATOMY.map((x, k) => '<button class="ana-term ' + (k === idx ? 'on' : '') + '" data-action="set-step" data-value="' + k + '"><span>' + esc(x[1]) + '</span><em>' + esc(x[2]) + '</em></button>').join('') + '</div>'
-    + browser('<h1>Кофейня «Утро»</h1>\n<p>Свежий кофе каждый день.</p>', 'h1 { color: tomato; font-size: 40px; }', 'index.html', '', 1) + '</div></div>';
+  return '<div class="pair ana-pair"><div class="pane left"><div class="pane-heading"><span>style.css</span><span class="caps">' + (idx + 1) + ' / ' + ANATOMY.length + '</span></div><pre class="ana-code part-' + part + '">' + code + '</pre>'
+    + '<div class="buttons"><button class="secondary" data-action="prev-step" ' + (idx === 0 ? 'disabled' : '') + '>← Шаг назад</button><button class="primary" data-action="next-step" ' + (idx === ANATOMY.length - 1 ? 'disabled' : '') + '>Следующий шаг →</button><button class="secondary" data-action="reset-step" title="Сначала">↺</button><span class="key-hint">Пробел — шаг · ← → — слайды</span></div></div>'
+    + '<div class="pane right ana-list">' + ANATOMY.map((x, k) => '<button class="ana-row ' + (k === idx ? 'on' : '') + (k < idx ? ' seen' : '') + '" data-action="set-step" data-value="' + k + '"><span class="ana-n">' + String(k + 1).padStart(2, '0') + '</span><span class="ana-name"><b>' + esc(x[1]) + '</b><em>' + esc(x[2]) + '</em></span><span class="ana-desc">' + rich(x[3]) + '</span></button>').join('') + '</div></div>';
 }
 
 function liveView(kind, st) {
   const d = LIVE[kind], total = d.rules.length;
   const idx = Math.max(0, Math.min(st.step || 0, total));
-  let code = '', lineNo = 0, active = [], dimFrom = 0;
-  d.rules.forEach(([css], k) => {
-    const lines = css.split('\n');
-    if (k > 0) { code += '\n\n'; lineNo += 1; }
-    const from = lineNo + 1;
-    code += css; lineNo += lines.length;
-    if (k === idx - 1) active = Array.from({ length: lines.length }, (_, j) => from + j);
-    if (k === idx - 1) dimFrom = lineNo;
-  });
-  if (idx === 0) dimFrom = -1;
+  const shown = d.rules.slice(0, idx).map((r) => r[0]);
+  const code = idx ? shown.join('\n\n') : '/* пока пусто — жмите «Следующий шаг» */';
+  const curLines = idx ? shown[idx - 1].split('\n').length : 0;
+  const lines = code.split('\n').length;
+  const active = idx ? Array.from({ length: curLines }, (_, j) => lines - curLines + 1 + j) : [];
   const cur = idx ? d.rules[idx - 1] : null;
   const flashSel = cur ? (cur[3] || (cur[0].includes('{') ? cur[0].split('{')[0].trim() : '')) : '';
-  const applied = d.base + d.rules.slice(0, idx).map((r) => r[0]).join('\n') + (flashSel ? '\n' + flashSel + '{animation:flash 1.1s ease 2}' : '');
+  const applied = d.base + shown.join('\n') + (flashSel ? '\n' + flashSel + '{animation:flash 1.1s ease 2}' : '');
   const label = cur ? rich(cur[1]) + term(cur[2]) : esc(d.start);
-  return '<div class="pair live-pair"><div class="pane left"><div class="pane-heading"><span>style.css</span><span class="caps">' + (idx === 0 ? 'ЕЩЁ НИЧЕГО' : 'ПРАВИЛ: ' + idx) + '</span></div>' + codeWindow(code, { active, dimFrom: idx === 0 ? 0.5 : dimFrom }) + '</div>'
-    + '<div class="pane right"><div class="pane-heading"><span>РЕЗУЛЬТАТ</span><span>' + idx + ' / ' + total + '</span></div><div class="mem-step">' + label + '</div>' + browser(PAGE, applied, 'index.html', '', 0.9)
-    + '<div class="buttons"><button class="secondary" data-action="prev-step" ' + (idx === 0 ? 'disabled' : '') + '>← Шаг назад</button><button class="primary" data-action="next-step" ' + (idx === total ? 'disabled' : '') + '>Следующий шаг →</button><button class="secondary" data-action="reset-step" title="Сначала">↺</button></div></div></div>';
+  return '<div class="pair live-pair"><div class="pane left"><div class="pane-heading"><span>style.css</span><span class="caps">ШАГ ' + idx + ' / ' + total + '</span></div>' + codeWindow(code, { active, dimFrom: idx ? 0 : 0.5 }) + '</div>'
+    + '<div class="pane right"><div class="mem-step">' + label + '</div>' + browser(PAGE, applied, 'index.html', '', 0.95)
+    + '<div class="buttons"><button class="secondary" data-action="prev-step" ' + (idx === 0 ? 'disabled' : '') + '>← Шаг назад</button><button class="primary" data-action="next-step" ' + (idx === total ? 'disabled' : '') + '>Следующий шаг →</button><button class="secondary" data-action="reset-step" title="Сначала">↺</button><span class="key-hint">Пробел — шаг · ← → — слайды</span></div></div></div>';
 }
 const liveSteps = (s) => (s.type === 'live' ? LIVE[s.demo].rules.length : s.type === 'anatomy' ? ANATOMY.length - 1 : 0);
 
@@ -513,7 +504,9 @@ function render(isNavigation) {
   stage.innerHTML = '<section class="slide active ' + (isNavigation ? '' : 'instant') + ' ' + (s.type === 'cover' ? 'cover' : '') + ' type-' + s.type + '" aria-label="Слайд ' + (current + 1) + ' из ' + slides.length + '">' + (s.type === 'cover' || s.type === 'end' ? content : '<div class="slide-content">' + content + '</div>') + '</section>';
   if (s.type === 'color') paintMixer();
   stage.querySelectorAll('.sum-card code, .exc-card code').forEach((c) => { c.outerHTML = inlineCode(c.textContent); });
-  stage.querySelectorAll('.code-pre').forEach((pre) => { const a = pre.querySelector('.active-line'); if (a) pre.scrollTop = Math.max(0, a.offsetTop - pre.clientHeight / 3); });
+  fitCode();
+  fitPreviews();
+
   document.getElementById('sectionTitle').textContent = s.section;
   document.getElementById('currentTitle').textContent = removeTags(s.title);
   document.getElementById('slideCounter').textContent = String(current + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
@@ -525,6 +518,37 @@ function render(isNavigation) {
   document.querySelectorAll('[data-slide]').forEach((b, i) => { b.classList.toggle('active', i === current); b.setAttribute('aria-current', i === current ? 'page' : 'false'); });
   document.getElementById('notesContent').innerHTML = '<h3>' + esc(removeTags(s.title)) + '</h3><p>' + esc(s.notes || '') + '</p><p><b>План на слайд:</b> ' + s.minutes + ' мин.</p>';
 }
+// Подбираем крупнейший шрифт, при котором код целиком помещается в окно
+function fitCode() {
+  stage.querySelectorAll('.code-pre, .ana-code').forEach((pre) => {
+    const max = pre.classList.contains('ana-code') ? 76 : pre.closest('.bug-col') ? 34 : 30;
+    let lo = 12, hi = max;
+    pre.style.fontSize = hi + 'px';
+    if (pre.scrollHeight <= pre.clientHeight + 1 && pre.scrollWidth <= pre.clientWidth + 1) return;
+    while (hi - lo > 0.5) {
+      const mid = (lo + hi) / 2;
+      pre.style.fontSize = mid + 'px';
+      if (pre.scrollHeight <= pre.clientHeight + 1 && pre.scrollWidth <= pre.clientWidth + 1) lo = mid; else hi = mid;
+    }
+    pre.style.fontSize = lo + 'px';
+    // даже на минимальном шрифте не влезает — разрешаем прокрутку и показываем активную строку
+    if (pre.scrollHeight > pre.clientHeight + 1 || pre.scrollWidth > pre.clientWidth + 1) {
+      pre.style.overflow = 'auto';
+      const act = pre.querySelector('.active-line');
+      if (act) pre.scrollTop = Math.max(0, act.offsetTop - pre.clientHeight / 3);
+    }
+  });
+}
+// Масштаб страницы в предпросмотре — по высоте окна, чтобы на большом экране не было пустоты
+function fitPreviews() {
+  stage.querySelectorAll('.pv').forEach((f) => {
+    const apply = () => { const d = f.contentDocument; if (!d || !d.documentElement) return; const z = Math.max(0.72, Math.min(1.4, f.clientHeight / 430)); d.documentElement.style.zoom = z; };
+    f.addEventListener('load', apply); apply();
+  });
+}
+let fitTimer;
+window.addEventListener('resize', () => { clearTimeout(fitTimer); fitTimer = setTimeout(() => { fitCode(); fitPreviews(); }, 80); });
+if (document.fonts) document.fonts.ready.then(fitCode);
 function fromHash() { const h = Number(location.hash.replace('#', '')); return Number.isInteger(h) && h >= 1 && h <= slides.length ? h - 1 : 0; }
 function go(i, push = true) { current = Math.max(0, Math.min(slides.length - 1, i)); if (push && location.hash !== '#' + (current + 1)) history.replaceState(null, '', '#' + (current + 1)); render(true); }
 function closeOverlays() { document.getElementById('outlineOverlay').hidden = true; document.getElementById('notesOverlay').hidden = true; }
@@ -535,6 +559,7 @@ function stepBy(delta) { const st = state(), max = liveSteps(slides[current]); s
 stage.addEventListener('click', (e) => {
   const node = e.target.closest('[data-action]');
   if (!node) return;
+  node.blur();
   const action = node.dataset.action, st = state(), v = node.dataset.value;
   if (action === 'next-slide') { go(current + 1); return; }
   if (action === 'answer') { st.answer = Number(v); render(false); return; }
@@ -596,10 +621,11 @@ window.addEventListener('hashchange', () => { const next = fromHash(); if (next 
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') { closeOverlays(); return; }
   if (!document.getElementById('outlineOverlay').hidden || !document.getElementById('notesOverlay').hidden) return;
-  const editing = e.target && (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName) || e.target.isContentEditable);
-  if (editing) return;
+  const typing = e.target && (e.target.tagName === 'TEXTAREA' || e.target.isContentEditable || (e.target.tagName === 'INPUT' && /^(text|search|email|number)$/.test(e.target.type)));
+  if (typing) return;
   const s = slides[current];
-  if ((s.type === 'live' || s.type === 'anatomy') && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); stepBy(1); return; }
+  if ((s.type === 'live' || s.type === 'anatomy') && (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowDown')) { e.preventDefault(); stepBy(1); return; }
+  if ((s.type === 'live' || s.type === 'anatomy') && e.key === 'ArrowUp') { e.preventDefault(); stepBy(-1); return; }
   if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); go(current + 1); return; }
   if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(current - 1); return; }
   if (e.key === 'Home') { e.preventDefault(); go(0); } else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
@@ -607,7 +633,7 @@ window.addEventListener('keydown', (e) => {
   else if (e.key.toLowerCase() === 'n') toggleOverlay('notesOverlay');
   else if (e.key.toLowerCase() === 't') document.getElementById('themeBtn').click();
   else if (e.key.toLowerCase() === 'f') document.getElementById('fullscreenBtn').click();
-});
+}, true);
 try { if (localStorage.getItem('css-lab-theme') === 'dark') document.body.classList.add('dark'); } catch (e) { /* */ }
 if (!location.hash) history.replaceState(null, '', '#1');
 current = fromHash();
