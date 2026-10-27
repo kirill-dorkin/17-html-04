@@ -51,7 +51,7 @@ const slides = [
   { type: 'quiz', label: '02 / РАЗМИНКА', section: 'Разминка', title: 'Вспомним <em>img</em>', lead: 'Прошлый урок. Сначала ответ вслух, потом кнопка.', minutes: 2, lang: 'html', file: 'index.html',
     code: '<h2>Наш кофе</h2>\n<img src="img/coffee.jpg">\n<a href="menu.html">Меню</a>', question: 'Чего не хватает у картинки?', choices: ['alt — описания картинки', 'href — адреса', 'закрывающего тега </img>', 'Ничего, всё верно'], correct: 0,
     explain: '`img` — одиночный тег (void element), закрывать не нужно. `src` — путь к файлу, `alt` — альтернативный текст, если картинка не загрузилась (и для незрячих). `href` — у ссылки `a`.', notes: 'Если путаются в src/href — напомните: src = «откуда взять файл», href = «куда перейти». Сегодня href понадобится ещё раз — в теге link.' },
-  { type: 'beforeafter', label: '03 / ЗАЧЕМ', section: 'Зачем CSS', title: 'HTML — <em>что</em>. CSS — <em>как</em> выглядит', lead: 'Это одна и та же страница. Отличается только файл style.css. Нажмите переключатель.', minutes: 3, notes: 'Сначала покажите страницу без CSS: «так выглядит ваша домашка с прошлого урока». Потом включите. Скажите: к концу урока каждый сделает такую же, и каждое свойство слева вы сегодня разберёте.' },
+  { type: 'beforeafter', label: '03 / ЗАЧЕМ', section: 'Зачем CSS', title: 'HTML — <em>что</em>. CSS — <em>как</em> выглядит', lead: 'Слева и справа — один и тот же index.html. Справа подключили один файл style.css.', minutes: 3, notes: 'Слева — «так выглядит ваша домашка с прошлого урока». Справа — то же самое с CSS. Скажите: к концу урока каждый сделает такую же, и каждое свойство слева вы сегодня разберёте.' },
   { type: 'tabs', label: '04 / ПОДКЛЮЧИТЬ', section: 'Подключение', title: 'Три способа <em>подключить CSS</em>', lead: 'Все три работают. Но на реальных сайтах — только третий. Переключайте вкладки.', minutes: 4, notes: 'Пройдите все три вкладки по порядку. Главный вопрос группе: «на сайте 20 страниц — где менять цвет заголовков?» Атрибут — на каждом теге, style — на каждой странице, link — в одном файле.' },
   { type: 'theory', label: '05 / LINK', section: 'Подключение', title: 'Тег <em>link</em> — мост к файлу стилей', lead: 'Пишем в head, рядом с title. Один раз — на каждой странице сайта.', minutes: 2, lang: 'html', file: 'index.html',
     code: '<!DOCTYPE html>\n<html>\n<head>\n  <meta charset="UTF-8">\n  <title>Кофейня</title>\n  <link rel="stylesheet" href="style.css">\n</head>\n<body>\n  <h1>Кофейня «Утро»</h1>\n</body>\n</html>',
@@ -80,7 +80,7 @@ const slides = [
   { type: 'bugs', label: '17 / ОТЛАДКА', section: 'Ошибки', title: 'Почему <em>не работает</em>?', lead: 'Сначала группа объясняет причину. Потом откройте исправление.', minutes: 4, notes: 'Эти ошибки будут на практике у каждого. Главное правило: CSS не ругается — он молча пропускает. Поэтому смотрим в DevTools.' },
   { type: 'practice', practice: 'joint', label: '18 / ВМЕСТЕ', section: 'Практика', title: 'Вместе: <em>сайт кофейни</em>', lead: 'С нуля по ТЗ: каркас и контент — повторение, потом подключаем CSS и красим шаг за шагом.', minutes: 25, notes: 'Подробный сценарий — teacher/JOINT-GUIDE.md. VS Code слева, браузер справа. После каждого шага: Ctrl+S → F5. Если стиль не применился — сразу открываем DevTools, а не гадаем.' },
   { type: 'practice', practice: 'solo', label: '19 / САМИ', section: 'Практика', title: 'Самостоятельно: <em>любимый фильм</em>', lead: 'Те же шаги, своя страница и тёмная тема. Подглядывать в совместную практику можно.', minutes: 15, notes: 'Не подсказывайте код — спрашивайте: «какой селектор?», «какое свойство меняет цвет текста?». Тёмная тема проверяет понимание color vs background-color.' },
-  { type: 'glossary', label: '20 / СЛОВАРЬ', section: 'Итог', title: 'Словарь <em>разработчика</em>', lead: 'Так эти вещи называют в документации, на собеседованиях и в команде. Русский термин — английский — как говорят вслух.', minutes: 3, notes: 'Пройдитесь по строкам: вы говорите русский термин — группа хором английский. Объясните, что гуглить лучше по-английски: «css inheritance», «user agent stylesheet» — ответов в разы больше.' },
+  { type: 'glossary', label: '20 / СЛОВАРЬ', section: 'Итог', title: 'Словарь <em>разработчика</em>', lead: 'Как это называют в документации, на собеседованиях и в команде.', minutes: 3, notes: 'Пройдитесь по строкам: вы говорите русский термин — группа хором английский. Объясните, что гуглить лучше по-английски: «css inheritance», «user agent stylesheet» — ответов в разы больше.' },
   { type: 'summary', part: 'concepts', label: '21 / ШПАРГАЛКА 1/2', section: 'Итог', title: 'Шпаргалка: <em>главные понятия</em>', lead: 'Весь урок на одном экране. Листать презентацию не нужно — можно скачать или распечатать.', minutes: 3, notes: 'Пусть ученики сфотографируют или скачают. Пройдитесь по каждому блоку одной фразой.' },
   { type: 'summary', part: 'exceptions', label: '22 / ШПАРГАЛКА 2/2', section: 'Итог', title: 'Шпаргалка: <em>исключения и ловушки</em>', lead: 'Именно эти случаи дают ошибки в домашке. Проверьте себя по списку.', minutes: 2, notes: 'Спросите 2–3 пункта: «почему так?» — без подсказки.' },
   { type: 'end', title: 'Готово', section: 'Итог', minutes: 1, notes: 'Домашнее задание: страница-рецепт, CSS в отдельной папке css/. ТЗ — в комментариях файлов.' },
@@ -140,20 +140,20 @@ const PRACTICE = {
     caption: 'materials/joint · 25 минут', zip: './materials/joint.zip', spec: './materials/view.html?p=joint', title: 'Кофейня «Утро»', files: 'index.html · style.css · img/',
     tasks: [
       ['Каркас', '<!DOCTYPE html>', 'урок 2'],
-      ['Контент', '<h1> <p> <img> <ul> <ol> <a>', 'урок 3'],
+      ['Контент', '<h1> <p> <img> <ul> <a>', 'урок 3'],
       ['Подключить CSS', '<link rel="stylesheet">', 'НОВОЕ: link'],
       ['Фон и текст', 'background-color: …;', 'НОВОЕ: цвет'],
       ['Шрифт страницы', 'font-family: …;', 'НОВОЕ: наследование'],
       ['Заголовки', 'h1, h2 { }', 'НОВОЕ: группа, каскад'],
       ['Списки и ссылки', 'li { } a { }', 'НОВОЕ: свой цвет у a'],
-      ['Проверка', 'F12 → Elements → Styles', 'НОВОЕ: DevTools'],
+      ['Проверка', 'F12 → Styles', 'НОВОЕ: DevTools'],
     ],
   },
   solo: {
     caption: 'materials/solo · 15 минут', zip: './materials/solo.zip', spec: './materials/view.html?p=solo', title: 'Любимый фильм', files: 'index.html · style.css · img/',
     tasks: [
       ['Каркас', '<!DOCTYPE html>', 'как в кофейне'],
-      ['Контент', '<h1> <p> <img> <ul> <ol> <a>', 'как в кофейне'],
+      ['Контент', '<h1> <p> <img> <ul> <a>', 'как в кофейне'],
       ['Подключить CSS', '<link rel="stylesheet">', 'как в кофейне'],
       ['Тёмная тема', 'background-color: …;', 'тёмный фон — светлый текст'],
       ['Шрифт', 'font-family: …;', 'с запасным шрифтом'],
@@ -270,7 +270,19 @@ function inlineCode(t) {
   return '<code class="ic">' + html + '</code>';
 }
 // текст с `кодом` в обратных кавычках
-const rich = (text) => String(text).split('`').map((part, i) => (i % 2 ? inlineCode(part) : esc(part))).join('');
+const rich = (text) => {
+  const parts = String(text).split('`');
+  let out = '';
+  parts.forEach((part, i) => {
+    if (i % 2) {
+      const next = parts[i + 1] || '';
+      const glue = (next.match(/^[.,:;!?)»]+/) || [''])[0];
+      parts[i + 1] = next.slice(glue.length);
+      out += '<span class="nw">' + inlineCode(part) + esc(glue) + '</span>';
+    } else out += esc(part);
+  });
+  return out;
+};
 const term = (t) => (t ? '<span class="term"><b>термин</b>' + esc(t) + '</span>' : '');
 
 // opts: caption, lang, active: [номера строк], dimFrom: строки после — приглушить
@@ -305,18 +317,16 @@ function browser(html, css, caption = 'index.html', id = '', zoom = 0.8) {
 
 function quiz(s, st) {
   const answered = Number.isInteger(st.answer);
-  return '<div class="quiz-grid"><div class="quiz-left"><div class="quiz-question">' + esc(s.question) + '</div><div class="quiz-options">' + s.choices.map((c, i) => '<button class="answer-option ' + (answered ? (i === s.correct ? 'correct' : i === st.answer ? 'wrong' : '') : '') + ' ' + (st.answer === i ? 'selected' : '') + '" data-action="answer" data-value="' + i + '" aria-pressed="' + (st.answer === i) + '"><b style="display:inline-block;width:24px;color:var(--purple)">' + String.fromCharCode(65 + i) + '.</b> ' + esc(c) + '</button>').join('') + '</div>' + (answered ? '<div class="feedback ' + (st.answer === s.correct ? '' : 'warn') + '">' + (st.answer === s.correct ? '✓ Верно. ' : 'Не совсем. ') + rich(s.explain) + '</div><button class="small-btn" data-action="reset-answer">Ответить ещё раз ↺</button>' : '<p class="action-hint">Выберите вариант — появится разбор.</p>') + '</div><div class="quiz-right">' + codeWindow(s.code, { lang: s.lang, caption: s.file }) + '</div></div>';
+  return '<div class="quiz-grid"><div class="quiz-left"><div class="quiz-question">' + esc(s.question) + '</div><div class="quiz-options">' + s.choices.map((c, i) => '<button class="answer-option ' + (answered ? (i === s.correct ? 'correct' : i === st.answer ? 'wrong' : '') : '') + ' ' + (st.answer === i ? 'selected' : '') + '" data-action="answer" data-value="' + i + '" aria-pressed="' + (st.answer === i) + '"><b>' + String.fromCharCode(65 + i) + '</b>' + esc(c) + '</button>').join('') + '</div>' + (answered ? '<div class="feedback ' + (st.answer === s.correct ? '' : 'warn') + '">' + (st.answer === s.correct ? '✓ Верно. ' : 'Не совсем. ') + rich(s.explain) + '</div><button class="small-btn" data-action="reset-answer">Ответить ещё раз ↺</button>' : '<p class="action-hint">Выберите вариант — появится разбор.</p>') + '</div><div class="quiz-right">' + codeWindow(s.code, { lang: s.lang, caption: s.file }) + '</div></div>';
 }
 
 function theoryView(s) {
-  return '<div class="pair"><div class="pane left"><div class="pane-heading">КОД</div>' + codeWindow(s.code, { lang: s.lang, caption: s.file }) + '</div><div class="pane right theory-pane">' + s.items.map((x, i) => '<div class="concept"><span>' + String(i + 1).padStart(2, '0') + '</span><div><h3>' + esc(x[0]) + '</h3><p>' + rich(x[1]) + '</p>' + term(x[2]) + '</div></div>').join('') + '</div></div>';
+  return '<div class="pair"><div class="pane left"><div class="pane-heading">КОД</div>' + codeWindow(s.code, { lang: s.lang, caption: s.file }) + '</div><div class="pane right theory-pane"><div class="pane-heading">ГЛАВНОЕ</div>' + s.items.map((x, i) => '<div class="concept"><span>' + String(i + 1).padStart(2, '0') + '</span><div><h3>' + esc(x[0]) + '</h3><p>' + rich(x[1]) + '</p>' + term(x[2]) + '</div></div>').join('') + '</div></div>';
 }
 
-function beforeAfter(st) {
-  const on = !!st.on;
-  return '<div class="pair ba-pair"><div class="pane left"><div class="pane-heading"><span>style.css</span><span class="caps">' + (on ? 'ПОДКЛЮЧЁН' : 'ОТКЛЮЧЁН') + '</span></div>' + codeWindow(FINAL_CSS, { dimFrom: on ? 0 : 0.5 }) + '</div>'
-    + '<div class="pane right"><div class="pane-heading"><span>РЕЗУЛЬТАТ</span><span>тот же index.html</span></div>' + browser(PAGE, on ? FINAL_CSS : '')
-    + '<div class="ba-switch"><button class="' + (on ? 'secondary' : 'primary') + '" data-action="ba" data-value="0">Только HTML</button><button class="' + (on ? 'primary' : 'secondary') + '" data-action="ba" data-value="1">HTML + CSS</button><span>' + (on ? 'Каждое свойство слева разберём сегодня.' : 'Так выглядит страница с прошлого урока.') + '</span></div></div></div>';
+function beforeAfter() {
+  return '<div class="pair ba-grid"><div class="pane"><div class="pane-heading"><span>Только HTML</span><span>так было на уроке 3</span></div>' + browser(PAGE, '') + '</div>'
+    + '<div class="pane"><div class="pane-heading"><span class="hl">HTML + style.css</span><span>сегодня</span></div>' + browser(PAGE, FINAL_CSS) + '</div></div>';
 }
 
 function tabsView(st) {
@@ -335,7 +345,7 @@ function anatomyView(st) {
   const code = P('sel', 'h1', 'keyword') + ' ' + P('brace', '{', 'operator') + '\n  ' + decl('color', 'tomato') + '\n  ' + decl('font-size', '40px') + '\n' + P('brace', '}', 'operator');
   return '<div class="pair ana-pair"><div class="pane left"><div class="pane-heading"><span>style.css</span><span class="caps">' + (idx + 1) + ' / ' + ANATOMY.length + '</span></div><pre class="ana-code part-' + part + '">' + code + '</pre>'
     + '<div class="buttons"><button class="secondary" data-action="prev-step" ' + (idx === 0 ? 'disabled' : '') + '>← Шаг назад</button><button class="primary" data-action="next-step" ' + (idx === ANATOMY.length - 1 ? 'disabled' : '') + '>Следующий шаг →</button><button class="secondary" data-action="reset-step" title="Сначала">↺</button><span class="key-hint">Пробел — шаг · ← → — слайды</span></div></div>'
-    + '<div class="pane right ana-list">' + ANATOMY.map((x, k) => '<button class="ana-row ' + (k === idx ? 'on' : '') + (k < idx ? ' seen' : '') + '" data-action="set-step" data-value="' + k + '"><span class="ana-n">' + String(k + 1).padStart(2, '0') + '</span><span class="ana-name"><b>' + esc(x[1]) + '</b><em>' + esc(x[2]) + '</em></span><span class="ana-desc">' + rich(x[3]) + '</span></button>').join('') + '</div></div>';
+    + '<div class="pane right ana-list"><div class="pane-heading"><span>ЧАСТИ ПРАВИЛА</span><span>по-русски · in English</span></div>' + ANATOMY.map((x, k) => '<button class="ana-row ' + (k === idx ? 'on' : '') + (k < idx ? ' seen' : '') + '" data-action="set-step" data-value="' + k + '"><span class="ana-n">' + String(k + 1).padStart(2, '0') + '</span><span class="ana-name"><b>' + esc(x[1]) + '</b><em>' + esc(x[2]) + '</em></span><span class="ana-desc">' + rich(x[3]) + '</span></button>').join('') + '</div></div>';
 }
 
 function liveView(kind, st) {
@@ -351,7 +361,7 @@ function liveView(kind, st) {
   const applied = d.base + shown.join('\n') + (flashSel ? '\n' + flashSel + '{animation:flash 1.1s ease 2}' : '');
   const label = cur ? rich(cur[1]) + term(cur[2]) : esc(d.start);
   return '<div class="pair live-pair"><div class="pane left"><div class="pane-heading"><span>style.css</span><span class="caps">ШАГ ' + idx + ' / ' + total + '</span></div>' + codeWindow(code, { active, dimFrom: idx ? 0 : 0.5 }) + '</div>'
-    + '<div class="pane right"><div class="mem-step">' + label + '</div>' + browser(PAGE, applied, 'index.html', '', 0.95)
+    + '<div class="pane right"><div class="pane-heading"><span>РЕЗУЛЬТАТ</span><span>index.html</span></div><div class="mem-step">' + label + '</div>' + browser(PAGE, applied, 'index.html', '', 0.95)
     + '<div class="buttons"><button class="secondary" data-action="prev-step" ' + (idx === 0 ? 'disabled' : '') + '>← Шаг назад</button><button class="primary" data-action="next-step" ' + (idx === total ? 'disabled' : '') + '>Следующий шаг →</button><button class="secondary" data-action="reset-step" title="Сначала">↺</button><span class="key-hint">Пробел — шаг · ← → — слайды</span></div></div></div>';
 }
 const liveSteps = (s) => (s.type === 'live' ? LIVE[s.demo].rules.length : s.type === 'anatomy' ? ANATOMY.length - 1 : 0);
@@ -396,7 +406,7 @@ function devtoolsView(st) {
   const ua = DEV_UA[sel] || [];
   const uaProps = new Set(ua.map((d) => d[0]));
   const decl = (prop, val, ri, struck) => '<label class="dt-decl ' + (struck ? 'struck' : '') + '">' + (ri === undefined ? '<span class="dt-nobox"></span>' : '<input type="checkbox" data-off="' + ri + ':' + prop + '" ' + (st.off[ri + ':' + prop] ? '' : 'checked') + '>') + '<span><span class="dt-p">' + esc(prop) + '</span>: <span class="dt-v">' + (/^#/.test(val) ? '<i class="sw" style="background:' + val + '"></i>' : '') + esc(val) + '</span>;</span></label>';
-  let styles = '<div class="dt-rule faint"><div class="dt-sel">element.style {</div><div class="dt-end">}</div></div>';
+  let styles = '';
   own.forEach((r) => { styles += '<div class="dt-rule"><div class="dt-sel">' + r.sel + ' {<span class="dt-src">style.css</span></div>' + r.decls.map((d) => decl(d[0], d[1], r.ri, st.off[r.ri + ':' + d[0]])).join('') + '<div class="dt-end">}</div></div>'; });
   if (ua.length) styles += '<div class="dt-rule ua"><div class="dt-sel">' + sel + ' {<span class="dt-src">стили браузера</span></div>' + ua.map((d) => decl(d[0], d[1], undefined, ownProps.has(d[0]))).join('') + '<div class="dt-end">}</div></div>';
   if (sel !== 'body') {
@@ -405,9 +415,9 @@ function devtoolsView(st) {
     styles += '<div class="dt-inh">Унаследовано от <b>body</b></div><div class="dt-rule"><div class="dt-sel">body {<span class="dt-src">style.css</span></div>' + inh.map((d) => decl(d[0], d[1], 0, st.off['0:' + d[0]] || ownProps.has(d[0]) || uaProps.has(d[0]))).join('') + '<div class="dt-end">}</div></div>';
   }
   return '<div class="pair dt-pair"><div class="pane left"><div class="pane-heading"><span>СТРАНИЦА</span><span>выбран: &lt;' + esc(sel) + '&gt;</span></div><div class="dt-banner ' + (st.msg ? 'on' : '') + '">' + (st.msg || 'Кликните по тегу в Elements, снимите галочку у свойства — и смотрите на страницу.') + '</div>' + browser(PAGE, devCSS(st, sel), 'index.html', '', 1) + '</div>'
-    + '<div class="pane right devtools"><div class="dt-tabs"><span class="on">Elements</span><span>Console</span><span>Sources</span></div><div class="dt-body"><div class="dt-tree">'
+    + '<div class="pane right"><div class="pane-heading"><span>DEVTOOLS · F12</span><span>Elements → Styles</span></div><div class="devtools"><div class="dt-tabs"><span class="on">Elements</span><span>Console</span><span>Sources</span></div><div class="dt-body"><div class="dt-tree">'
     + DEV_TREE.map(([t, lvl, label]) => '<button class="dt-node ' + (t === sel ? 'on' : '') + '" style="padding-left:' + (10 + lvl * 16) + 'px" data-action="dt-pick" data-value="' + t + '">' + hlHTML(label) + '</button>').join('')
-    + '</div><div class="dt-styles"><div class="dt-subtabs"><span class="on">Styles</span><span>Computed</span></div>' + styles + '</div></div></div></div>';
+    + '</div><div class="dt-styles"><div class="dt-subtabs"><span class="on">Styles</span><span>Computed</span></div>' + styles + '</div></div></div></div></div>';
 }
 
 // Песочница: прозрачный textarea поверх подсвеченного кода
@@ -460,7 +470,7 @@ function summaryView(s) {
 }
 
 function cover() {
-  return '<div class="cover-grid"><div class="cover-copy"><div class="overline"><i></i> HTML &amp; CSS <b></b> УРОК 4</div><h1>Один файл.<br><span>Весь стиль сайта.</span></h1><p>Подключаем CSS и даём странице цвет, фон и шрифт — без единой правки в HTML.</p><div class="pills"><span>&lt;link&gt;</span><span>селектор { }</span><span>color</span><span>background-color</span><span>font-family</span><span>каскад</span></div><button class="primary" data-action="next-slide">Начать урок →</button></div>'
+  return '<div class="cover-grid"><div class="cover-copy"><div class="overline"><i></i> HTML &amp; CSS <b></b> УРОК 4</div><h1>Один файл.<br><span>Весь стиль сайта.</span></h1><p>Подключаем CSS и даём странице цвет, фон и шрифт — без единой правки в HTML.</p><div class="pills"><span>&lt;link&gt;</span><span>селектор { }</span><span>color</span><span>background-color</span><span>font-family</span></div><button class="primary" data-action="next-slide">Начать урок →</button></div>'
     + '<div class="cover-art"><div class="art-glow"></div><div class="art-glow two"></div><div class="art-stage"><div class="art-card cover-ba"><div class="art-heading"><span>CSS LAB / 04</span><span>до → после</span></div>'
     + '<div class="cv-split"><div class="cv-page plain"><b>Кофейня «Утро»</b><span>Свежий кофе и выпечка</span><span>• Капучино — 180 сом</span><u>Instagram</u></div><div class="cv-page styled"><b>Кофейня «Утро»</b><span>Свежий кофе и выпечка</span><span>• Капучино — 180 сом</span><em>Instagram</em></div></div>'
     + '<div class="art-input">' + hlCSS('h1 { color: #6f4e37; font-family: Georgia; }') + '</div></div></div></div></div>';
@@ -621,7 +631,10 @@ document.getElementById('prevBtn').addEventListener('click', () => go(current - 
 document.getElementById('nextBtn').addEventListener('click', () => go(current + 1));
 document.getElementById('outlineBtn').addEventListener('click', () => toggleOverlay('outlineOverlay'));
 document.getElementById('notesBtn').addEventListener('click', () => toggleOverlay('notesOverlay'));
-document.getElementById('themeBtn').addEventListener('click', () => { document.body.classList.toggle('light'); try { localStorage.setItem('css-lab-theme-v5', document.body.classList.contains('light') ? 'light' : 'dark'); } catch (e) { /* */ } });
+function setThemeLabel() { const light = document.body.classList.contains('light'); document.getElementById('themeToggle').innerHTML = light ? '<span>☾</span>Тёмная' : '<span>☀</span>Светлая'; }
+function toggleTheme() { document.body.classList.toggle('light'); try { localStorage.setItem('css-lab-theme-v5', document.body.classList.contains('light') ? 'light' : 'dark'); } catch (e) { /* */ } setThemeLabel(); }
+document.getElementById('themeBtn').addEventListener('click', toggleTheme);
+document.getElementById('themeToggle').addEventListener('click', (e) => { e.currentTarget.blur(); toggleTheme(); });
 document.getElementById('fullscreenBtn').addEventListener('click', () => { if (document.fullscreenElement) document.exitFullscreen?.(); else document.documentElement.requestFullscreen?.(); });
 document.querySelectorAll('[data-close]').forEach((n) => n.addEventListener('click', closeOverlays));
 document.getElementById('outlineList').innerHTML = slides.map((s, i) => '<button type="button" data-slide="' + i + '"><strong>' + String(i + 1).padStart(2, '0') + '</strong><span>' + esc(removeTags(s.title)) + '</span></button>').join('');
@@ -644,6 +657,7 @@ window.addEventListener('keydown', (e) => {
   else if (e.key.toLowerCase() === 'f') document.getElementById('fullscreenBtn').click();
 }, true);
 try { if (localStorage.getItem('css-lab-theme-v5') === 'light') document.body.classList.add('light'); } catch (e) { /* */ }
+setThemeLabel();
 // Холст 1920×1080 масштабируется под окно
 const deck = document.getElementById('deck');
 function scaleDeck() { deck.style.setProperty('--s', Math.min(innerWidth / 1920, innerHeight / 1080)); }
