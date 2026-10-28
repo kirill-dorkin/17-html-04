@@ -409,7 +409,7 @@ function liveView(kind, st) {
   const text = cur ? rich(cur[1]) : esc(d.start);
   const steps = d.rules.map((r, k) => {
     const first = r[0].split('\n')[0].replace(/\s*\{$/, '');
-    return '<button class="lv-step ' + (k + 1 === idx ? 'on' : k + 1 < idx ? 'done' : '') + '" data-action="set-step" data-value="' + (k + 1) + '"><span>' + (k + 1) + '</span>' + inlineCode(first.startsWith('/*') ? 'a' : first) + '</button>';
+    return '<button class="lv-step ' + (k + 1 === idx ? 'on' : k + 1 < idx ? 'done' : '') + '" data-action="set-step" data-value="' + (k + 1) + '"><span>' + (k + 1) + '</span><b>' + esc(first.startsWith('/*') ? 'a' : first) + '</b></button>';
   }).join('');
   return '<div class="pair live-pair"><div class="pane left"><div class="pane-heading"><span>РЕЗУЛЬТАТ</span><span>index.html</span></div>' + browser(PAGE, applied, 'index.html', '', 0.95) + '</div>'
     + '<div class="pane right"><div class="pane-heading"><span>ДОБАВЛЯЕМ</span><span class="caps">ШАГ ' + idx + ' / ' + total + '</span></div>'

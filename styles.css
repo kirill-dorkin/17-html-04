@@ -543,3 +543,9 @@ body.light .add-card{background:#fff;border-left-color:#86a91a;box-shadow:0 10px
 body.light .lv-step.on{border-color:#86a91a}
 .live-pair{grid-template-columns:1fr 1fr}
 .live-pair .pane.left .browser{flex:1 1 0}
+.lv-steps{gap:12px}
+.lv-step{display:inline-flex;align-items:center;gap:12px;height:52px;padding:0 18px 0 10px;border-radius:14px;opacity:.55}
+.lv-step span{flex:none;width:32px;height:32px;border-radius:9px;font:700 16px/1 var(--mono)}
+.lv-step b{font:600 21px/1 var(--mono);color:var(--violet);white-space:nowrap}
+body.light .lv-step b{color:#7b45d6}
+.lv-step.done,.lv-step.on{opacity:1}
