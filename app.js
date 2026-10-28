@@ -121,7 +121,7 @@ const slides = [
     explain: 'За `color` спорят два правила — побеждает нижнее: `green`. `font-size` никто не переопределил (override) — остаётся `20px`.', notes: '' },
   { type: 'devtools', label: '22 / DEVTOOLS', section: 'DevTools', title: 'DevTools: <em>откуда этот стиль?</em>', lead: 'F12 → Elements → Styles. Выберите тег слева, отключайте свойства галочками.', minutes: 3, notes: 'Это копия настоящей панели Chrome. Покажите: 1) a — цвет body перечёркнут, потому что у ссылки свой цвет от браузера; 2) снимите галочку — стиль выключится; 3) потом откройте настоящий F12 на любом сайте. Главный инструмент, когда «стиль не работает».' },
   { type: 'bugs', label: '23 / ОТЛАДКА', section: 'Ошибки', title: 'Почему <em>не работает</em>?', lead: 'Сначала группа объясняет причину. Потом откройте исправление.', minutes: 4, notes: 'Эти ошибки будут на практике у каждого. Главное правило: CSS не ругается — он молча пропускает. Поэтому смотрим в DevTools.' },
-  { type: 'practice', practice: 'joint', label: '24 / ВМЕСТЕ', section: 'Практика', title: 'Вместе: <em>сайт кофейни</em>', lead: 'С нуля по ТЗ: каркас и контент — повторение, потом подключаем CSS и красим шаг за шагом.', minutes: 25, notes: 'Подробный сценарий — teacher/JOINT-GUIDE.md. VS Code слева, браузер справа. После каждого шага: Ctrl+S → F5. Если стиль не применился — сразу открываем DevTools, а не гадаем.' },
+  { type: 'practice', practice: 'joint', label: '24 / ВМЕСТЕ', section: 'Практика', title: 'Вместе: <em>сайт кофейни</em>', lead: 'Каркас уже в файле. По ТЗ: title и контент — повторение, потом подключаем CSS и красим шаг за шагом.', minutes: 25, notes: 'Подробный сценарий — teacher/JOINT-GUIDE.md. VS Code слева, браузер справа. После каждого шага: Ctrl+S → F5. Если стиль не применился — сразу открываем DevTools, а не гадаем.' },
   { type: 'practice', practice: 'solo', label: '25 / САМИ', section: 'Практика', title: 'Самостоятельно: <em>любимый фильм</em>', lead: 'Те же шаги, своя страница и тёмная тема. Подглядывать в совместную практику можно.', minutes: 15, notes: 'Не подсказывайте код — спрашивайте: «какой селектор?», «какое свойство меняет цвет текста?». Тёмная тема проверяет понимание color vs background-color.' },
   { type: 'glossary', label: '26 / СЛОВАРЬ', section: 'Итог', title: 'Словарь <em>разработчика</em>', lead: 'Как это называют в документации, на собеседованиях и в команде.', minutes: 3, notes: 'Пройдитесь по строкам: вы говорите русский термин — группа хором английский. Объясните, что гуглить лучше по-английски: «css inheritance», «user agent stylesheet» — ответов в разы больше.' },
   { type: 'summary', part: 'concepts', label: '27 / ШПАРГАЛКА 1/2', section: 'Итог', title: 'Шпаргалка: <em>главные понятия</em>', lead: 'Весь урок на одном экране. Листать презентацию не нужно — можно скачать или распечатать.', minutes: 3, notes: 'Пусть ученики сфотографируют или скачают. Пройдитесь по каждому блоку одной фразой.' },
@@ -182,7 +182,7 @@ const PRACTICE = {
   joint: {
     caption: 'materials/joint · 25 минут', zip: './materials/joint.zip', spec: './materials/view.html?p=joint', title: 'Кофейня «Утро»', files: 'index.html · style.css · img/',
     tasks: [
-      ['Каркас', '<!DOCTYPE html>', 'урок 2'],
+      ['Вкладка', '<title>', 'каркас уже в файле'],
       ['Контент', '<h1> <p> <img> <ul> <a>', 'урок 3'],
       ['Подключить CSS', '<link rel="stylesheet">', 'НОВОЕ: link'],
       ['Фон и текст', 'background-color: …;', 'НОВОЕ: цвет'],
@@ -195,7 +195,7 @@ const PRACTICE = {
   solo: {
     caption: 'materials/solo · 15 минут', zip: './materials/solo.zip', spec: './materials/view.html?p=solo', title: 'Любимый фильм', files: 'index.html · style.css · img/',
     tasks: [
-      ['Каркас', '<!DOCTYPE html>', 'как в кофейне'],
+      ['Вкладка', '<title>', 'каркас уже в файле'],
       ['Контент', '<h1> <p> <img> <ul> <a>', 'как в кофейне'],
       ['Подключить CSS', '<link rel="stylesheet">', 'как в кофейне'],
       ['Тёмная тема', 'background-color: …;', 'тёмный фон — светлый текст'],
@@ -540,7 +540,7 @@ function practice(s, st) {
   const remaining = st.remaining ?? s.minutes * 60;
   return '<div class="practice-layout"><div class="task-list"><div class="pane-heading">ШАГ → ЧТО ПИШЕМ → ' + (joint ? 'ПОВТОРЯЕМ / НОВОЕ' : 'ПОДСКАЗКА') + '<span>index.html · style.css</span></div>'
     + p.tasks.map((x, i) => '<div class="task-step pr-row"><i>' + String(i + 1).padStart(2, '0') + '</i><div class="pr-btn">' + esc(x[0]) + '</div>' + (/→/.test(x[1]) ? '<code class="ic">' + esc(x[1]) + '</code>' : inlineCode(x[1])) + '<div class="pr-ret">→ ' + esc(x[2]) + '</div></div>').join('')
-    + '<div class="tip">В файлах нет кода — только <b>ТЗ в комментариях</b>: что сделать, зачем и «Проверка». Пишем всё с нуля под каждым пунктом.</div></div>'
+    + '<div class="tip">В index.html уже готов <b>каркас</b>, внутри — <b>ТЗ в комментариях</b>: что сделать, зачем и «Проверка». Код пишем под каждым пунктом. <b>! + Tab не нужен.</b></div></div>'
     + '<div class="task-side"><div class="goal"><span class="caps">' + esc(p.caption) + '</span><h3>' + esc(p.title) + '</h3>'
     + '<ol class="flow"><li>Распаковать ZIP, открыть папку в <b>VS Code</b></li><li>Открыть <b>index.html</b> в браузере (двойной клик)</li><li>Пункт ТЗ → код → <b>Ctrl+S</b> → <b>F5</b> в браузере</li></ol>'
     + '<div class="minutes" id="timerDisplay" role="timer">' + formatTime(remaining) + '</div><div class="buttons"><button class="primary" data-action="timer">' + (st.running ? 'Пауза' : 'Старт таймера') + '</button><button class="secondary" data-action="timer-reset">Сброс</button></div></div>'
