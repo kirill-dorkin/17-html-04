@@ -541,3 +541,5 @@ body.light .add-card{background:#fff;border-left-color:#86a91a;box-shadow:0 10px
 .lv-step.on{opacity:1;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
 .lv-step.on span{background:var(--accent);color:var(--on-accent)}
 body.light .lv-step.on{border-color:#86a91a}
+.live-pair{grid-template-columns:1fr 1fr}
+.live-pair .pane.left .browser{flex:1 1 0}
