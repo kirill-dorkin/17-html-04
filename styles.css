@@ -549,3 +549,34 @@ body.light .lv-step.on{border-color:#86a91a}
 .lv-step b{font:600 21px/1 var(--mono);color:var(--violet);white-space:nowrap}
 body.light .lv-step b{color:#7b45d6}
 .lv-step.done,.lv-step.on{opacity:1}
+
+/* ═══ Кнопки на официальные сайты ═══ */
+.site-links{margin-top:18px;flex-wrap:wrap}
+.site-links a{text-decoration:none}
+
+/* ═══ Иконка — это символ шрифта ═══ */
+.if-pair{grid-template-columns:1fr 1fr;gap:44px}
+.gl-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gl-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:18px 10px 14px;border-radius:20px;background:var(--surface);border:1px solid var(--line)}
+body.light .gl-card{background:#fff}
+.gl-card.is-icon{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+body.light .gl-card.is-icon{border-color:#86a91a}
+.gl-pic{height:84px;display:grid;place-items:center;font:600 72px/1 var(--sans);color:var(--ink)}
+.gl-card b{font:700 20px var(--mono);color:var(--accent-ink)}
+.gl-card span{font:500 15px var(--sans);color:var(--muted)}
+.if-points{display:flex;flex-direction:column;gap:14px;margin-top:6px}
+.if-point{display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start}
+.if-point>span{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--accent);color:var(--on-accent);font:700 18px var(--mono)}
+.if-point b{font:750 25px/1.25 var(--sans)}
+.if-point p{font:500 21px/1.4 var(--sans);color:var(--soft);margin-top:4px}
+.if-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;gap:.3em;border-radius:24px;background:var(--surface);border:1px solid var(--line);font-family:var(--sans);font-weight:700;line-height:1;overflow:hidden;transition:color .2s}
+body.light .if-stage{background:#fff}
+.if-controls{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.if-range,.if-colors{display:flex;align-items:center;gap:14px;font:600 20px var(--mono);color:var(--muted)}
+.if-range input{width:260px;accent-color:#86a91a}
+.if-range b{min-width:72px;color:var(--ink)}
+.if-color{width:40px;height:40px;border-radius:50%;border:3px solid var(--surface);box-shadow:0 0 0 1px var(--line-2)}
+.if-color.on{box-shadow:0 0 0 3px #86a91a}
+#ifCode code.ic{font-size:26px}
+.if-note{font:500 21px/1.4 var(--sans);color:var(--muted)}
+.site-links{margin-top:4px}
