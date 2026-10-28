@@ -94,7 +94,7 @@ const slides = [
     code: '/* все абзацы страницы */\np {\n  color: gray;\n}\n\n/* одно правило для h1 и h2 */\nh1, h2 {\n  color: navy;\n}\n\n/* все пункты в ul и ol */\nli {\n  color: teal;\n}',
     items: [['По тегу', '`p { }` — красит каждый `p` на странице. Пишем без угловых скобок.', 'type selector — селектор типа'], ['Через запятую', '`h1, h2 { }` — одно правило на несколько тегов.', 'selector list — группировка'], ['Комментарий', '`/* заметка */` — для человека. Браузер его пропускает.', 'CSS comment — комментарий']], notes: 'Выбирать отдельный элемент (только этот абзац) научимся через классы — это будет позже. Сегодня хватает тегов.' },
   { type: 'color', label: '09 / ЦВЕТ', section: 'Цвет и фон', title: 'Три способа <em>записать цвет</em>', lead: 'Двигайте ползунки: один и тот же цвет можно записать тремя способами.', minutes: 4, notes: 'Сначала покажите имена (tomato, navy) — проще всего. Потом RGB: «сколько красного, зелёного и синего от 0 до 255». HEX — те же три числа, только короче. В дизайн-макетах почти всегда HEX — его копируют из Figma.' },
-  { type: 'live', demo: 'color', label: '10 / ЦВЕТ', section: 'Цвет и фон', title: '<em>color</em> и <em>background-color</em> — по шагам', lead: 'color — цвет текста. background-color — цвет фона. Слева правило, справа — что изменилось.', minutes: 4, notes: 'На каждом шаге спрашивайте до нажатия: «что сейчас поменяется?» Частая путаница: хотят покрасить текст, а пишут background-color.' },
+  { type: 'live', demo: 'color', label: '10 / ЦВЕТ', section: 'Цвет и фон', title: '<em>color</em> и <em>background-color</em> — по шагам', lead: 'color — цвет текста. background-color — цвет фона. Слева код и результат, справа — что добавляем на этом шаге.', minutes: 4, notes: 'На каждом шаге спрашивайте до нажатия: «что сейчас поменяется?» Частая путаница: хотят покрасить текст, а пишут background-color.' },
   { type: 'quiz', label: '11 / ПРОВЕРКА', section: 'Цвет и фон', title: 'Куда <em>пропал текст</em>?', lead: 'Текст на странице есть, но его не видно.', minutes: 1, lang: 'css', file: 'style.css',
     code: 'body {\n  background-color: #ffffff;\n}\n\np {\n  color: #ffffff;\n}', question: 'Почему абзац не видно?', choices: ['#ffffff — белый текст на белом фоне', 'Неправильный HEX', 'p не наследует цвет', 'Нужно rgb() вместо HEX'], correct: 0,
     explain: '`#ffffff` — белый. Белый текст на белом фоне есть, но его не видно. Текст и фон должны контрастировать (contrast) — иначе страница нечитаема.', notes: 'Попросите выделить текст мышкой — он «появится». Хороший момент сказать про контраст и читаемость.' },
@@ -408,10 +408,18 @@ function liveView(kind, st) {
   const cur = idx ? d.rules[idx - 1] : null;
   const flashSel = cur ? (cur[3] || (cur[0].includes('{') ? cur[0].split('{')[0].trim() : '')) : '';
   const applied = d.base + shown.join('\n') + (flashSel ? '\n' + flashSel + '{animation:flash 1.1s ease 2}' : '');
-  const label = cur ? rich(cur[1]) + term(cur[2]) : esc(d.start);
-  return '<div class="pair live-pair"><div class="pane left"><div class="pane-heading"><span>style.css</span><span class="caps">ШАГ ' + idx + ' / ' + total + '</span></div>' + codeWindow(code, { active, dimFrom: idx ? 0 : 0.5 }) + '</div>'
-    + '<div class="pane right"><div class="pane-heading"><span>РЕЗУЛЬТАТ</span><span>index.html</span></div><div class="mem-step">' + label + '</div>' + browser(PAGE, applied, 'index.html', '', 0.95)
-    + '<div class="buttons"><button class="secondary" data-action="prev-step" ' + (idx === 0 ? 'disabled' : '') + '>← Шаг назад</button><button class="primary" data-action="next-step" ' + (idx === total ? 'disabled' : '') + '>Следующий шаг →</button><button class="secondary" data-action="reset-step" title="Сначала">↺</button><span class="key-hint">Пробел — шаг · ← → — слайды</span></div></div></div>';
+  // что добавляем на этом шаге — крупно
+  const added = cur ? '<pre class="add-code">' + cur[0].split('\n').map((l) => '<span class="add-line">' + (hlCSS(l) || ' ') + '</span>').join('') + '</pre>' : '<div class="add-empty">Пока ничего. Жмите «Следующий шаг» →</div>';
+  const text = cur ? rich(cur[1]) : esc(d.start);
+  const steps = d.rules.map((r, k) => {
+    const first = r[0].split('\n')[0].replace(/\s*\{$/, '');
+    return '<button class="lv-step ' + (k + 1 === idx ? 'on' : k + 1 < idx ? 'done' : '') + '" data-action="set-step" data-value="' + (k + 1) + '"><span>' + (k + 1) + '</span>' + inlineCode(first.startsWith('/*') ? 'a' : first) + '</button>';
+  }).join('');
+  return '<div class="pair live-pair"><div class="pane left"><div class="pane-heading"><span>style.css</span><span>index.html — результат ↓</span></div>' + codeWindow(code, { active, dimFrom: idx ? 0 : 0.5 }) + browser(PAGE, applied, 'index.html', '', 0.95) + '</div>'
+    + '<div class="pane right"><div class="pane-heading"><span>ДОБАВЛЯЕМ</span><span class="caps">ШАГ ' + idx + ' / ' + total + '</span></div>'
+    + '<div class="add-card">' + added + '<p class="add-text">' + text + '</p>' + (cur ? term(cur[2]) : '') + '</div>'
+    + '<div class="lv-steps">' + steps + '</div>'
+    + '<div class="buttons"><button class="secondary" data-action="prev-step" ' + (idx === 0 ? 'disabled' : '') + '>← Шаг назад</button><button class="primary" data-action="next-step" ' + (idx === total ? 'disabled' : '') + '>Следующий шаг →</button><button class="secondary" data-action="reset-step" title="Сначала">↺</button><span class="key-hint">Пробел — шаг</span></div></div></div>';
 }
 function webView(kind, st) {
   const d = WEB[kind], total = d.steps.length - 1;
@@ -599,8 +607,8 @@ function fitCode() {
     lines.forEach((l) => { widest = Math.max(widest, l.firstElementChild.offsetWidth + l.lastElementChild.offsetWidth); });
     return widest <= pre.clientWidth - 48;
   };
-  stage.querySelectorAll('.code-pre, .ana-code').forEach((pre) => {
-    const max = pre.classList.contains('ana-code') ? 104 : pre.closest('.quiz-right, .bug-col') ? 46 : 40;
+  stage.querySelectorAll('.code-pre, .ana-code, .add-code').forEach((pre) => {
+    const max = pre.classList.contains('ana-code') ? 104 : pre.classList.contains('add-code') ? 40 : pre.closest('.quiz-right, .bug-col') ? 46 : 40;
     let lo = 18, hi = max;
     pre.style.overflow = '';
     pre.style.fontSize = hi + 'px';

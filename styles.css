@@ -518,3 +518,26 @@ body.light .ana{opacity:.3}body.light .ana.on,body.light .ana-code.part-decl .an
 .type-web .slide-content{gap:28px}
 .web-grid .code-head{padding:9px 18px}
 .web-grid .code-pre{padding:10px 22px 10px 0;line-height:1.5}
+
+/* ═══ Живые демо: слева код + результат, справа — что добавляем ═══ */
+.live-pair{grid-template-columns:1.05fr .95fr;gap:40px}
+.live-pair .pane.left{gap:16px}
+.live-pair .pane.left .code-window{flex:1 1 0}
+.live-pair .pane.left .browser{flex:1.25 1 0}
+.live-pair .pane.right{gap:18px}
+.add-card{flex:1;min-height:0;display:flex;flex-direction:column;gap:22px;background:var(--surface);border:1px solid var(--line);border-left:8px solid var(--accent);border-radius:24px;padding:30px 34px;overflow:hidden}
+body.light .add-card{background:#fff;border-left-color:#86a91a;box-shadow:0 10px 30px #14161c0d}
+.add-code{margin:0;font:600 40px/1.45 var(--mono);white-space:pre;color:var(--ink);background:var(--accent-soft);border-radius:16px;padding:18px 24px;overflow:hidden}
+.add-line{display:block}
+.add-empty{font:600 30px/1.4 var(--sans);color:var(--muted)}
+.add-text{font:600 29px/1.45 var(--sans);color:var(--ink)}
+.add-card .term{margin-top:auto}
+.lv-steps{flex:none;display:flex;flex-wrap:wrap;gap:10px}
+.lv-step{display:flex;align-items:center;gap:10px;border:1px solid var(--line-2);background:transparent;border-radius:14px;padding:8px 14px 8px 8px;font:600 18px var(--sans);color:var(--muted);opacity:.6;transition:opacity .2s,border-color .2s}
+.lv-step span{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--surface-2);font:700 16px var(--mono)}
+.lv-step code.ic{font-size:19px}
+.lv-step.done{opacity:1}
+.lv-step.done span{background:var(--good-soft);color:var(--good)}
+.lv-step.on{opacity:1;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.lv-step.on span{background:var(--accent);color:var(--on-accent)}
+body.light .lv-step.on{border-color:#86a91a}
