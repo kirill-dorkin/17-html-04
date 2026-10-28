@@ -358,7 +358,7 @@ function head(s) { return '<div class="intro"><span class="tag">' + (s.label || 
 // Предпросмотр страницы в «браузере»
 function pageDoc(html, css, zoom = 0.8) {
   const base = location.href.replace(/[#?].*$/, '').replace(/[^/]*$/, '');
-  return '<!doctype html><html><head><meta charset="utf-8"><base href="' + base + '" target="_blank"><style>html{zoom:' + zoom + '}@keyframes flash{0%,100%{outline:4px solid transparent;outline-offset:6px}35%,65%{outline:4px solid #7956f7;outline-offset:6px}}</style><style>' + css + '</style></head><body>' + html + '</body></html>';
+  return '<!doctype html><html><head><meta charset="utf-8"><base href="' + base + '" target="_blank"><style>html{zoom:' + zoom + '}@keyframes flash{0%,40%{box-shadow:inset 0 0 0 100vmax #c8f25a8c}100%{box-shadow:inset 0 0 0 100vmax #c8f25a00}}</style><style>' + css + '</style></head><body>' + html + '</body></html>';
 }
 function browser(html, css, caption = 'index.html', id = '', zoom = 0.8) {
   return '<div class="browser"><div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="addr">' + esc(caption) + '</span></div><iframe class="pv" tabindex="-1"' + (id ? ' id="' + id + '"' : '') + ' title="Предпросмотр страницы" srcdoc="' + esc(pageDoc(html, css, zoom)) + '"></iframe></div>';
@@ -403,7 +403,7 @@ function liveView(kind, st) {
   const shown = d.rules.slice(0, idx).map((r) => r[0]);
   const cur = idx ? d.rules[idx - 1] : null;
   const flashSel = cur ? (cur[3] || (cur[0].includes('{') ? cur[0].split('{')[0].trim() : '')) : '';
-  const applied = d.base + shown.join('\n') + (flashSel ? '\n' + flashSel + '{animation:flash 1.1s ease 2}' : '');
+  const applied = d.base + shown.join('\n') + (flashSel ? '\n' + flashSel + '{animation:flash 1.6s ease-out 1}' : '');
   // что добавляем на этом шаге — крупно
   const added = cur ? '<pre class="add-code">' + cur[0].split('\n').map((l) => '<span class="add-line">' + (hlCSS(l) || ' ') + '</span>').join('') + '</pre>' : '<div class="add-empty">Пока ничего. Жмите «Следующий шаг» →</div>';
   const text = cur ? rich(cur[1]) : esc(d.start);
