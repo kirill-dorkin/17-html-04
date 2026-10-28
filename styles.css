@@ -580,3 +580,4 @@ body.light .if-stage{background:#fff}
 #ifCode code.ic{font-size:26px}
 .if-note{font:500 21px/1.4 var(--sans);color:var(--muted)}
 .site-links{margin-top:4px}
+.gl-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(8,minmax(0,1fr))}
