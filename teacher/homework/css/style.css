@@ -8,7 +8,7 @@ body {
 
 /* ШАГ 5 · заголовки (цвет — rgb) */
 h1, h2 {
-  font-family: Georgia, serif;
+  font-family: "Lora", serif;  /* ШАГ 9 · Google Fonts */
   color: rgb(160, 70, 30);
 }
 
@@ -32,6 +32,12 @@ a {
   color: rgb(160, 70, 30);
   font-weight: bold;
   text-decoration: none;
+}
+
+/* БОНУС · иконки */
+i {
+  color: darkgreen;
+  font-size: 24px;
 }
 
 /* ОТВЕТЫ

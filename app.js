@@ -45,9 +45,39 @@ const LIVE = {
   },
 };
 
+// ───────── Шрифты и иконки из интернета: index.html + style.css + результат
+const GF_URL = 'https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat&display=swap';
+const FA_URL = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css';
+const WEB = {
+  gfonts: {
+    base: LIVE.font.base,
+    page: () => PAGE,
+    steps: [
+      { html: '<head>\n  <title>Кофейня «Утро»</title>\n  <link rel="stylesheet" href="style.css">\n</head>', css: '/* цвета уже подключены — меняем только шрифт */', label: 'Цвета есть, а шрифт стандартный, как на любом компьютере. Подключим красивый шрифт из интернета.' },
+      { html: '<head>\n  <title>Кофейня «Утро»</title>\n  <link rel="stylesheet"\n    href="' + GF_URL + '">\n  <link rel="stylesheet" href="style.css">\n</head>', hh: [3, 4], css: '/* цвета уже подключены — меняем только шрифт */', load: GF_URL, label: 'Скопировали `<link>` с fonts.google.com и вставили в `head` выше style.css. Страница не изменилась: шрифт скачался, но мы его ещё не применили.', term: 'web font — веб-шрифт' },
+      { html: '<head>\n  <title>Кофейня «Утро»</title>\n  <link rel="stylesheet"\n    href="' + GF_URL + '">\n  <link rel="stylesheet" href="style.css">\n</head>', css: 'body {\n  font-family: "Montserrat", sans-serif;\n}', ch: [1, 2, 3], load: GF_URL, label: 'Имя шрифта пишем в `font-family`, как Arial: буква в букву, в кавычках. `sans-serif` — запасной, если шрифт не загрузится.', term: 'font-family — семейство шрифта' },
+      { html: '<head>\n  <title>Кофейня «Утро»</title>\n  <link rel="stylesheet"\n    href="' + GF_URL + '">\n  <link rel="stylesheet" href="style.css">\n</head>', css: 'body {\n  font-family: "Montserrat", sans-serif;\n}\n\nh1, h2 {\n  font-family: "Lora", serif;\n}', ch: [5, 6, 7], load: GF_URL, label: 'Заголовкам — второй шрифт, с засечками. `wght@700` в ссылке — скачали жирное начертание для заголовков.', term: 'font pairing — пара шрифтов' },
+    ],
+  },
+  icons: {
+    base: FINAL_CSS,
+    page: (n) => PAGE
+      .replace('<h1>', '<h1>' + (n >= 2 ? '<i class="fa-solid fa-mug-hot"></i> ' : ''))
+      .replace('<p>Свежий', '<p>' + (n >= 3 ? '<i class="fa-regular fa-clock"></i> ' : '') + 'Свежий')
+      .replace('">Instagram', '">' + (n >= 3 ? '<i class="fa-brands fa-instagram"></i> ' : '') + 'Instagram'),
+    steps: [
+      { html: '<!-- head -->\n<link rel="stylesheet" href="style.css">\n<!-- body -->\n<h1>Кофейня «Утро»</h1>\n<p>Свежий кофе с 8:00.\n   Мы в <a href="…">Instagram</a></p>', css: '/* стили кофейни — как раньше */', label: 'Хотим иконки: чашку у заголовка, часы, логотип Instagram. Рисовать картинки не нужно — возьмём готовую библиотеку.' },
+      { html: '<!-- head -->\n<link rel="stylesheet"\n  href="' + FA_URL + '">\n<link rel="stylesheet" href="style.css">\n<!-- body -->\n<h1>Кофейня «Утро»</h1>\n<p>Свежий кофе с 8:00.\n   Мы в <a href="…">Instagram</a></p>', hh: [2, 3], css: '/* стили кофейни — как раньше */', load: FA_URL, label: 'Подключили Font Awesome — тоже через `<link>`, с CDN (публичного сервера библиотек). Иконок пока нет: их нужно вставить в HTML.', term: 'CDN — сеть доставки файлов' },
+      { html: '<!-- head -->\n<link rel="stylesheet"\n  href="' + FA_URL + '">\n<link rel="stylesheet" href="style.css">\n<!-- body -->\n<h1><i class="fa-solid fa-mug-hot"></i> Кофейня «Утро»</h1>\n<p>Свежий кофе с 8:00.\n   Мы в <a href="…">Instagram</a></p>', hh: [6], css: '/* стили кофейни — как раньше */', load: FA_URL, label: 'Иконка — пустой тег `<i>`. Копируем его с fontawesome.com: `fa-solid` — набор, `fa-mug-hot` — имя иконки.', term: 'icon font — иконочный шрифт' },
+      { html: '<!-- head -->\n<link rel="stylesheet"\n  href="' + FA_URL + '">\n<link rel="stylesheet" href="style.css">\n<!-- body -->\n<h1><i class="fa-solid fa-mug-hot"></i> Кофейня «Утро»</h1>\n<p><i class="fa-regular fa-clock"></i> Свежий кофе с 8:00.\n   Мы в <a href="…"><i class="fa-brands fa-instagram"></i> Instagram</a></p>', hh: [7, 8], css: '/* стили кофейни — как раньше */', load: FA_URL, label: '`fa-regular` — контурные иконки, `fa-brands` — логотипы: Instagram, Telegram, WhatsApp.', term: 'brand icons — логотипы брендов' },
+      { html: '<!-- head -->\n<link rel="stylesheet"\n  href="' + FA_URL + '">\n<link rel="stylesheet" href="style.css">\n<!-- body -->\n<h1><i class="fa-solid fa-mug-hot"></i> Кофейня «Утро»</h1>\n<p><i class="fa-regular fa-clock"></i> Свежий кофе с 8:00.\n   Мы в <a href="…"><i class="fa-brands fa-instagram"></i> Instagram</a></p>', css: 'i {\n  color: #b5651d;\n  font-size: 30px;\n}', ch: [1, 2, 3, 4], load: FA_URL, label: 'Иконка — это «буква» шрифта. Поэтому `color` её красит, а `font-size` меняет размер, как у обычного текста. Селектор `i` — все иконки сразу.', term: 'color · font-size работают и для иконок' },
+    ],
+  },
+};
+
 // ───────── Слайды
 const slides = [
-  { type: 'cover', title: 'Подключение CSS', section: 'Начало', minutes: 1, notes: 'Сегодня страница из прошлого урока получает внешний вид. План на 90 минут: 5 — разминка и «до/после», 40 — теория с живыми демо, 25 — делаем вместе, 15 — сами, 5 — шпаргалка. Всё, что на слайдах, ученики увидят в практике.' },
+  { type: 'cover', title: 'Подключение CSS', section: 'Начало', minutes: 1, notes: 'Сегодня страница из прошлого урока получает внешний вид. План на 90 минут: 5 — разминка и «до/после», 45 — теория с живыми демо (включая Google Fonts и Font Awesome), 25 — делаем вместе, 12 — сами, 3 — шпаргалка. Всё, что на слайдах, ученики увидят в практике.' },
   { type: 'quiz', label: '02 / РАЗМИНКА', section: 'Разминка', title: 'Вспомним <em>img</em>', lead: 'Прошлый урок. Сначала ответ вслух, потом кнопка.', minutes: 2, lang: 'html', file: 'index.html',
     code: '<h2>Наш кофе</h2>\n<img src="img/coffee.jpg">\n<a href="menu.html">Меню</a>', question: 'Чего не хватает у картинки?', choices: ['alt — описания картинки', 'href — адреса', 'закрывающего тега </img>', 'Ничего, всё верно'], correct: 0,
     explain: '`img` — одиночный тег (void element), закрывать не нужно. `src` — путь к файлу, `alt` — альтернативный текст, если картинка не загрузилась (и для незрячих). `href` — у ссылки `a`.', notes: 'Если путаются в src/href — напомните: src = «откуда взять файл», href = «куда перейти». Сегодня href понадобится ещё раз — в теге link.' },
@@ -70,19 +100,31 @@ const slides = [
     explain: '`#ffffff` — белый. Белый текст на белом фоне есть, но его не видно. Текст и фон должны контрастировать (contrast) — иначе страница нечитаема.', notes: 'Попросите выделить текст мышкой — он «появится». Хороший момент сказать про контраст и читаемость.' },
   { type: 'live', demo: 'font', label: '12 / ШРИФТ', section: 'Шрифт', title: 'Шрифт, размер, <em>начертание</em>', lead: 'Шесть свойств, которые делают текст «дизайнерским».', minutes: 4, notes: 'font-family: всегда с запасным вариантом через запятую. Если у пользователя нет Georgia, браузер возьмёт любой serif. Имена с пробелом — в кавычках: "Times New Roman".' },
   { type: 'live', demo: 'inherit', label: '13 / НАСЛЕДОВАНИЕ', section: 'Наследование', title: 'Дети <em>наследуют</em> от родителя', lead: 'Цвет и шрифт текста переходят от body ко всему, что внутри. Но не всегда.', minutes: 3, notes: 'Вспомните вложенность с урока 2: всё внутри body — его «дети». Поэтому общий шрифт и цвет пишем один раз для body. Исключение — ссылка: у неё свой цвет от браузера.' },
-  { type: 'theory', label: '14 / КАСКАД', section: 'Каскад', title: 'Кто <em>победит</em>?', lead: 'Если два правила спорят за одно свойство — побеждает нижнее. Остальные свойства складываются.', minutes: 2, lang: 'css', file: 'style.css',
+  { type: 'theory', label: '14 / GOOGLE FONTS', section: 'Веб-шрифты', title: 'Google Fonts — <em>шрифты из интернета</em>', lead: 'Бесплатная библиотека из сотен шрифтов. Подключение — один &lt;link&gt; и одна строка CSS.', minutes: 2, lang: 'css', file: 'style.css',
+    code: '/* 1. fonts.google.com → выбрали шрифт\n   2. Get font → Get embed code\n   3. скопировали <link> → в head,\n      выше style.css\n   4. имя шрифта → в font-family */\n\nbody {\n  font-family: "Montserrat", sans-serif;\n}\n\nh1, h2 {\n  font-family: "Lora", serif;\n}',
+    items: [['Веб-шрифт', 'Шрифт скачивается с серверов Google. У всех пользователей он одинаковый, даже если на компьютере его нет.', 'web font — веб-шрифт'], ['Только с кириллицей', 'Фильтр Language → Cyrillic. Иначе русский текст останется стандартным шрифтом.', 'subset — набор символов'], ['Имя — буква в букву', 'Копируем с сайта, в кавычках: `"Montserrat"`. Запасной через запятую — на случай опечатки или без интернета.', 'fallback font — запасной шрифт']], notes: 'Откройте fonts.google.com вживую. Сразу фильтр Language → Cyrillic — иначе русские буквы будут стандартными. Get font → Get embed code. Google даёт три строки (две preconnect — для скорости): копируем все три в head выше style.css. Шрифты с кириллицей: Montserrat, Inter, Roboto, Lora, Playfair Display, Rubik.' },
+  { type: 'web', demo: 'gfonts', label: '15 / GOOGLE FONTS', section: 'Веб-шрифты', title: 'Подключаем <em>Google Fonts</em> — по шагам', lead: 'Сверху index.html, снизу style.css, справа результат. Два шага: ссылка в HTML и имя в CSS.', minutes: 3, notes: 'На шаге 1 спросите: «почему ничего не изменилось?» — шрифт скачали, но не применили. На шаге 2 обратите внимание: заголовки тоже сменили шрифт — наследование от body. На шаге 3 у h1, h2 своё правило, и оно сильнее унаследованного.' },
+  { type: 'quiz', label: '16 / ПРОВЕРКА', section: 'Веб-шрифты', title: 'Почему <em>шрифт не сменился</em>?', lead: 'Ссылка на Google Fonts в head есть, интернет есть, а шрифт стандартный.', minutes: 1, lang: 'css', file: 'style.css',
+    code: '/* в head подключён Google Fonts:\n   family=Montserrat */\n\nbody {\n  font-family: "Monserrat", sans-serif;\n}',
+    question: 'Что не так в этом коде?', choices: ['Имя нельзя писать в кавычках', 'Опечатка: Monserrat без буквы t', 'Google Fonts — только для заголовков', 'sans-serif перебил Montserrat'], correct: 1,
+    explain: 'Имя — буква в букву, как на сайте: `"Montserrat"`. Такого шрифта браузер не нашёл и молча взял запасной `sans-serif`.', notes: 'Ошибки CSS не видно — браузер просто берёт запасной шрифт. Проверка: F12 → Elements → Computed → font-family, или сравнить имя с сайтом Google.' },
+  { type: 'theory', label: '17 / ИКОНКИ', section: 'Иконки', title: 'Font Awesome — <em>иконки шрифтом</em>', lead: 'Тысячи бесплатных иконок. Подключаем библиотеку один раз — и вставляем иконки тегом &lt;i&gt;.', minutes: 2, lang: 'html', file: 'index.html',
+    code: '<!-- 1. fontawesome.com/icons → поиск\n     2. фильтр Free → выбрали иконку\n     3. скопировали тег <i> → в HTML -->\n\n<i class="fa-solid fa-mug-hot"></i>\n<i class="fa-regular fa-heart"></i>\n<i class="fa-brands fa-instagram"></i>',
+    items: [['Иконка — это шрифт', 'Каждая иконка — «буква» специального шрифта. Поэтому её красят `color` и увеличивают `font-size`.', 'icon font — иконочный шрифт'], ['Три набора', '`fa-solid` — залитые, `fa-regular` — контурные, `fa-brands` — логотипы. Берём только Free.', 'free icons — бесплатные иконки'], ['Тег i — пустой', 'Внутри ничего не пишем. `class` копируем с сайта как есть — подробно про классы на следующих уроках.', 'class — метка элемента']], notes: 'Откройте fontawesome.com/icons, поиск «coffee», фильтр Free. Клик по иконке → копируете тег <i>. Ссылка на библиотеку уже есть в ТЗ домашки (cdnjs). Про class не углубляйтесь: «это имя, по которому библиотека находит иконку». Если вместо иконки квадратик или пусто — не подключён link или опечатка в имени.' },
+  { type: 'web', demo: 'icons', label: '18 / ИКОНКИ', section: 'Иконки', title: 'Иконки на странице — <em>по шагам</em>', lead: 'Подключили библиотеку → вставили иконки → покрасили через CSS, как текст.', minutes: 3, notes: 'Главная мысль последнего шага: иконка — это текст. Поэтому color и font-size, которые мы сегодня учили, работают и на иконках. Спросите до нажатия: «как сделать иконки коричневыми?»' },
+  { type: 'theory', label: '19 / КАСКАД', section: 'Каскад', title: 'Кто <em>победит</em>?', lead: 'Если два правила спорят за одно свойство — побеждает нижнее. Остальные свойства складываются.', minutes: 2, lang: 'css', file: 'style.css',
     code: 'p {\n  color: gray;\n  font-size: 18px;\n}\n\np {\n  color: navy;   /* ниже — побеждает */\n}\n\n/* итог для p:\n   color: navy\n   font-size: 18px */',
     items: [['Ниже — главнее', 'Одинаковый селектор, одно свойство → работает то, что написано позже.', 'source order — порядок в коде'], ['Правила складываются', '`font-size` из первого правила никуда не делся.', 'cascade — каскад'], ['style="…" сильнее файла', 'Атрибут перебивает style.css — поэтому его и не используем.', 'inline styles — инлайн-стили']], notes: 'Слово «каскад» — это и есть Cascading в CSS (Cascading Style Sheets). Подробно про силу селекторов — когда пройдём классы.' },
-  { type: 'quiz', label: '15 / ПРОВЕРКА', section: 'Каскад', title: 'Каким будет <em>абзац</em>?', lead: 'Подумайте про оба правила.', minutes: 1, lang: 'css', file: 'style.css',
+  { type: 'quiz', label: '20 / ПРОВЕРКА', section: 'Каскад', title: 'Каким будет <em>абзац</em>?', lead: 'Подумайте про оба правила.', minutes: 1, lang: 'css', file: 'style.css',
     code: 'p {\n  color: red;\n  font-size: 20px;\n}\n\np {\n  color: green;\n}', question: 'Как будет выглядеть p?', choices: ['Красный, 20px', 'Зелёный, 20px', 'Зелёный, обычного размера'], correct: 1,
     explain: 'За `color` спорят два правила — побеждает нижнее: `green`. `font-size` никто не переопределил (override) — остаётся `20px`.', notes: '' },
-  { type: 'devtools', label: '16 / DEVTOOLS', section: 'DevTools', title: 'DevTools: <em>откуда этот стиль?</em>', lead: 'F12 → Elements → Styles. Выберите тег слева, отключайте свойства галочками.', minutes: 3, notes: 'Это копия настоящей панели Chrome. Покажите: 1) a — цвет body перечёркнут, потому что у ссылки свой цвет от браузера; 2) снимите галочку — стиль выключится; 3) потом откройте настоящий F12 на любом сайте. Главный инструмент, когда «стиль не работает».' },
-  { type: 'bugs', label: '17 / ОТЛАДКА', section: 'Ошибки', title: 'Почему <em>не работает</em>?', lead: 'Сначала группа объясняет причину. Потом откройте исправление.', minutes: 4, notes: 'Эти ошибки будут на практике у каждого. Главное правило: CSS не ругается — он молча пропускает. Поэтому смотрим в DevTools.' },
-  { type: 'practice', practice: 'joint', label: '18 / ВМЕСТЕ', section: 'Практика', title: 'Вместе: <em>сайт кофейни</em>', lead: 'С нуля по ТЗ: каркас и контент — повторение, потом подключаем CSS и красим шаг за шагом.', minutes: 25, notes: 'Подробный сценарий — teacher/JOINT-GUIDE.md. VS Code слева, браузер справа. После каждого шага: Ctrl+S → F5. Если стиль не применился — сразу открываем DevTools, а не гадаем.' },
-  { type: 'practice', practice: 'solo', label: '19 / САМИ', section: 'Практика', title: 'Самостоятельно: <em>любимый фильм</em>', lead: 'Те же шаги, своя страница и тёмная тема. Подглядывать в совместную практику можно.', minutes: 15, notes: 'Не подсказывайте код — спрашивайте: «какой селектор?», «какое свойство меняет цвет текста?». Тёмная тема проверяет понимание color vs background-color.' },
-  { type: 'glossary', label: '20 / СЛОВАРЬ', section: 'Итог', title: 'Словарь <em>разработчика</em>', lead: 'Как это называют в документации, на собеседованиях и в команде.', minutes: 3, notes: 'Пройдитесь по строкам: вы говорите русский термин — группа хором английский. Объясните, что гуглить лучше по-английски: «css inheritance», «user agent stylesheet» — ответов в разы больше.' },
-  { type: 'summary', part: 'concepts', label: '21 / ШПАРГАЛКА 1/2', section: 'Итог', title: 'Шпаргалка: <em>главные понятия</em>', lead: 'Весь урок на одном экране. Листать презентацию не нужно — можно скачать или распечатать.', minutes: 3, notes: 'Пусть ученики сфотографируют или скачают. Пройдитесь по каждому блоку одной фразой.' },
-  { type: 'summary', part: 'exceptions', label: '22 / ШПАРГАЛКА 2/2', section: 'Итог', title: 'Шпаргалка: <em>исключения и ловушки</em>', lead: 'Именно эти случаи дают ошибки в домашке. Проверьте себя по списку.', minutes: 2, notes: 'Спросите 2–3 пункта: «почему так?» — без подсказки.' },
+  { type: 'devtools', label: '21 / DEVTOOLS', section: 'DevTools', title: 'DevTools: <em>откуда этот стиль?</em>', lead: 'F12 → Elements → Styles. Выберите тег слева, отключайте свойства галочками.', minutes: 3, notes: 'Это копия настоящей панели Chrome. Покажите: 1) a — цвет body перечёркнут, потому что у ссылки свой цвет от браузера; 2) снимите галочку — стиль выключится; 3) потом откройте настоящий F12 на любом сайте. Главный инструмент, когда «стиль не работает».' },
+  { type: 'bugs', label: '22 / ОТЛАДКА', section: 'Ошибки', title: 'Почему <em>не работает</em>?', lead: 'Сначала группа объясняет причину. Потом откройте исправление.', minutes: 4, notes: 'Эти ошибки будут на практике у каждого. Главное правило: CSS не ругается — он молча пропускает. Поэтому смотрим в DevTools.' },
+  { type: 'practice', practice: 'joint', label: '23 / ВМЕСТЕ', section: 'Практика', title: 'Вместе: <em>сайт кофейни</em>', lead: 'С нуля по ТЗ: каркас и контент — повторение, потом подключаем CSS и красим шаг за шагом.', minutes: 25, notes: 'Подробный сценарий — teacher/JOINT-GUIDE.md. VS Code слева, браузер справа. После каждого шага: Ctrl+S → F5. Если стиль не применился — сразу открываем DevTools, а не гадаем.' },
+  { type: 'practice', practice: 'solo', label: '24 / САМИ', section: 'Практика', title: 'Самостоятельно: <em>любимый фильм</em>', lead: 'Те же шаги, своя страница и тёмная тема. Подглядывать в совместную практику можно.', minutes: 15, notes: 'Не подсказывайте код — спрашивайте: «какой селектор?», «какое свойство меняет цвет текста?». Тёмная тема проверяет понимание color vs background-color.' },
+  { type: 'glossary', label: '25 / СЛОВАРЬ', section: 'Итог', title: 'Словарь <em>разработчика</em>', lead: 'Как это называют в документации, на собеседованиях и в команде.', minutes: 3, notes: 'Пройдитесь по строкам: вы говорите русский термин — группа хором английский. Объясните, что гуглить лучше по-английски: «css inheritance», «user agent stylesheet» — ответов в разы больше.' },
+  { type: 'summary', part: 'concepts', label: '26 / ШПАРГАЛКА 1/2', section: 'Итог', title: 'Шпаргалка: <em>главные понятия</em>', lead: 'Весь урок на одном экране. Листать презентацию не нужно — можно скачать или распечатать.', minutes: 3, notes: 'Пусть ученики сфотографируют или скачают. Пройдитесь по каждому блоку одной фразой.' },
+  { type: 'summary', part: 'exceptions', label: '27 / ШПАРГАЛКА 2/2', section: 'Итог', title: 'Шпаргалка: <em>исключения и ловушки</em>', lead: 'Именно эти случаи дают ошибки в домашке. Проверьте себя по списку.', minutes: 2, notes: 'Спросите 2–3 пункта: «почему так?» — без подсказки.' },
   { type: 'end', title: 'Готово', section: 'Итог', minutes: 1, notes: 'Домашнее задание: страница-рецепт, CSS в отдельной папке css/. ТЗ — в комментариях файлов.' },
 ];
 
@@ -178,6 +220,8 @@ const GLOSSARY = [
   ['Запасной шрифт', 'fallback font', '«фолбэк»', 'Georgia, serif'],
   ['Межстрочный интервал', 'line-height', '«лайн-хайт», «интерлиньяж»', 'line-height: 1.6;'],
   ['Контраст', 'contrast', '«текст не читается»', 'color: #fff;'],
+  ['Веб-шрифт', 'web font · Google Fonts', '«гугл-фонтс», «подключить шрифт»', 'font-family: "Lora";'],
+  ['Иконочный шрифт', 'icon font · Font Awesome', '«фонт авесом»', 'fa-star'],
   ['Инструменты разработчика', 'DevTools', '«девтулзы», «инспектор»', 'F12'],
 ];
 function glossaryView() {
@@ -189,7 +233,7 @@ const SUMMARY = [
   ['Правило <em>rule</em>', ['<code>селектор { свойство: значение; }</code>', 'Свойство и значение — через <b>двоеточие</b>, в конце — <b>точка с запятой</b>.', 'Комментарий: <code>/* … */</code>.']],
   ['Селекторы <em>selectors</em>', ['По тегу: <code>p { }</code> — все абзацы страницы.', 'Группа: <code>h1, h2 { }</code> — одно правило на несколько тегов.', 'Имя тега — без угловых скобок и без точки: <code>p</code>, не <code>&lt;p&gt;</code> и не <code>.p</code>.']],
   ['Цвет и фон <em>color · background</em>', ['<code>color</code> — цвет текста. <code>background-color</code> — цвет фона.', 'Записи цвета: <code>tomato</code> <code>#ff6347</code> <code>rgb(255, 99, 71)</code>', 'Текст и фон должны контрастировать.']],
-  ['Шрифт <em>typography</em>', ['<code>font-family: Georgia, serif;</code> — всегда с запасным.', '<code>font-size: 18px;</code> <code>font-weight: bold;</code> <code>font-style: italic;</code>', '<code>line-height: 1.6;</code> <code>text-align: center;</code> <code>text-decoration: none;</code>']],
+  ['Шрифт <em>typography</em>', ['<code>font-family: Georgia, serif;</code> — всегда с запасным.', 'Google Fonts: <code>&lt;link&gt;</code> в head + имя в <code>font-family</code>.', 'Font Awesome: иконки — это шрифт, их меняют <code>color</code> и <code>font-size</code>.']],
   ['Наследование и каскад <em>inheritance · cascade</em>', ['Цвет и шрифт body наследуют все теги внутри.', 'Спор за одно свойство: побеждает <b>нижнее</b> правило. Остальные свойства складываются.', 'Не работает? F12 → Elements → Styles.']],
 ];
 const EXCEPTIONS = [
@@ -290,7 +334,12 @@ function codeWindow(code, opts = {}) {
   const lang = opts.lang || 'css', active = opts.active || [];
   let inComment = false;
   const paint = (line) => {
-    if (lang !== 'css') return hl(line, lang);
+    if (lang !== 'css') {
+      if (inComment) { const e = line.indexOf('-->'); if (e < 0) return tok(line, 'comment'); inComment = false; return tok(line.slice(0, e + 3), 'comment') + hl(line.slice(e + 3), lang); }
+      const o = line.lastIndexOf('<!--');
+      if (o >= 0 && line.indexOf('-->', o) < 0) { inComment = true; return hl(line.slice(0, o), lang) + tok(line.slice(o), 'comment'); }
+      return hl(line, lang);
+    }
     let pre = '', rest = line;
     if (inComment) {
       const end = line.indexOf('*/');
@@ -364,7 +413,18 @@ function liveView(kind, st) {
     + '<div class="pane right"><div class="pane-heading"><span>РЕЗУЛЬТАТ</span><span>index.html</span></div><div class="mem-step">' + label + '</div>' + browser(PAGE, applied, 'index.html', '', 0.95)
     + '<div class="buttons"><button class="secondary" data-action="prev-step" ' + (idx === 0 ? 'disabled' : '') + '>← Шаг назад</button><button class="primary" data-action="next-step" ' + (idx === total ? 'disabled' : '') + '>Следующий шаг →</button><button class="secondary" data-action="reset-step" title="Сначала">↺</button><span class="key-hint">Пробел — шаг · ← → — слайды</span></div></div></div>';
 }
-const liveSteps = (s) => (s.type === 'live' ? LIVE[s.demo].rules.length : s.type === 'anatomy' ? ANATOMY.length - 1 : 0);
+function webView(kind, st) {
+  const d = WEB[kind], total = d.steps.length - 1;
+  const idx = Math.max(0, Math.min(st.step || 0, total)), t = d.steps[idx];
+  const css = d.base + (t.css.includes('{') ? '\n' + t.css : '');
+  const page = (t.load ? '<link rel="stylesheet" href="' + t.load + '">' : '') + d.page(idx);
+  const label = rich(t.label) + term(t.term);
+  return '<div class="web-grid web-' + kind + '"><div class="pane web-html">' + codeWindow(t.html, { lang: 'html', caption: 'index.html', active: t.hh || [] }) + '</div>'
+    + '<div class="pane web-css">' + codeWindow(t.css, { caption: 'style.css', active: t.ch || [] }) + '</div>'
+    + '<div class="pane web-result"><div class="pane-heading"><span>РЕЗУЛЬТАТ</span><span class="caps">ШАГ ' + idx + ' / ' + total + '</span></div><div class="mem-step">' + label + '</div>' + browser(page, css, 'index.html', '', 0.95)
+    + '<div class="buttons"><button class="secondary" data-action="prev-step" ' + (idx === 0 ? 'disabled' : '') + '>← Шаг назад</button><button class="primary" data-action="next-step" ' + (idx === total ? 'disabled' : '') + '>Следующий шаг →</button><button class="secondary" data-action="reset-step" title="Сначала">↺</button></div></div></div>';
+}
+const liveSteps = (s) => (s.type === 'live' ? LIVE[s.demo].rules.length : s.type === 'web' ? WEB[s.demo].steps.length - 1 : s.type === 'anatomy' ? ANATOMY.length - 1 : 0);
 
 // Смеситель цвета
 const hex2 = (n) => Number(n).toString(16).padStart(2, '0');
@@ -502,6 +562,7 @@ function render(isNavigation) {
     case 'tabs': content = head(s) + tabsView(st); break;
     case 'anatomy': content = head(s) + anatomyView(st); break;
     case 'live': content = head(s) + liveView(s.demo, st); break;
+    case 'web': content = head(s) + webView(s.demo, st); break;
     case 'color': content = head(s) + colorView(st); break;
     case 'devtools': content = head(s) + devtoolsView(st); break;
     case 'playground': content = head(s) + playgroundView(st); break;
@@ -531,6 +592,7 @@ function fitCode() {
   // помещается ли код: высота — по scrollHeight, ширина — по самой длинной строке
   const fits = (pre) => {
     if (pre.scrollHeight > pre.clientHeight + 1) return false;
+    if (pre.closest('.web-html')) return true; // длинные строки переносятся
     const lines = pre.querySelectorAll('.code-line');
     if (!lines.length) return pre.scrollWidth <= pre.clientWidth + 1;
     let widest = 0;
